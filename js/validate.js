@@ -9,6 +9,9 @@ function validateForm() {
         email: inputs.namedItem('email'),
         age: inputs.namedItem('age'),
         description: inputs.namedItem('description'),
+        gender: inputs.namedItem('gender'),
+        ssn: inputs.namedItem('ssn'),
+        dob: inputs.namedItem('dob'),
         gender: inputs.namedItem('gender')
     };
 
