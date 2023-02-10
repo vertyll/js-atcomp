@@ -10,9 +10,8 @@ function validateForm() {
         age: inputs.namedItem('age'),
         description: inputs.namedItem('description'),
         gender: inputs.namedItem('gender'),
-        ssn: inputs.namedItem('ssn'),
+        pesel: inputs.namedItem('pesel'),
         dob: inputs.namedItem('dob'),
-        gender: inputs.namedItem('gender')
     };
 
     const regex = {
