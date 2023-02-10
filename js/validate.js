@@ -21,8 +21,9 @@ function validateForm() {
         name: /^[a-zA-Z]+$/,
         surname: /^[a-zA-Z]+$/,
         email: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
-        age: /^[0-9]+$/,
-        pesel: /^[0-9]{11}$/
+        age: /^(1[89]|[2-9]\d)$/gm,
+        pesel: /^[0-9]{2}([02468]1|[13579][012])(0[1-9]|1[0-9]|2[0-9]|3[01])[0-9]{5}$/
+
     };
 
     if (formValues.name.value == "" && formValues.surname.value == "" && formValues.email.value == "" && formValues.pesel.value == "" && formValues.description.value == "") {
