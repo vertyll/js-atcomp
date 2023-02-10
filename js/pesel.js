@@ -32,7 +32,7 @@ function dobFromPesel(pesel) {
 
 function validatePesel(pesel){
 
-     let weight = [9,7,3,1,9,7,3,1,9,7];
+     let weight = [9, 7, 3, 1, 9, 7, 3, 1, 9, 7];
      let sum = 0;
     
      for(let i = 0; i < weight.length; i++) {
@@ -44,7 +44,10 @@ function validatePesel(pesel){
      if(!pesel == valid){
          customAlert("Pesel jest niepoprawny");
      }else {
-          addInfo();
+          dobFromPesel(pesel);
+          ageFromPesel(pesel);
+          genderFromPesel(pesel);
+          addInfo(pesel);
      }
 }
 

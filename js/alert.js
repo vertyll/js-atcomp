@@ -1,4 +1,4 @@
-function customAlert(message, timeout=null) {
+function customAlert(message) {
     const alert = document.createElement('div');
     const alertButton = document.createElement('button');
     alertButton.innerHTML = 'OK';

@@ -1,10 +1,9 @@
 import {customAlert} from './alert.js';
 import {validatePesel} from './pesel.js';
 
-function validateForm() {
-
     const inputs = document.getElementById('form').elements;
     const pesel = document.getElementById('pesel');
+
     const formValues = {
         name: inputs.namedItem('name'),
         surname: inputs.namedItem('surname'),
@@ -15,6 +14,8 @@ function validateForm() {
         pesel: inputs.namedItem('pesel'),
         dob: inputs.namedItem('dob'),
     };
+
+function validateForm() {
 
     const regex = {
         name: /^[a-zA-Z]+$/,
@@ -45,7 +46,7 @@ function validateForm() {
     }
     else if(!regex.pesel.test(formValues.pesel.value))
     {
-        customAlert("PESEL musi zawierać 11 znaków");
+        customAlert("Proszę wprowadzić poprawny PESEL");
     }
     else
     {
@@ -54,17 +55,6 @@ function validateForm() {
 };
 
 function addInfo(){
-    const inputs = document.getElementById('form').elements;
-    const formValues = {
-        name: inputs.namedItem('name'),
-        surname: inputs.namedItem('surname'),
-        email: inputs.namedItem('email'),
-        age: inputs.namedItem('age'),
-        description: inputs.namedItem('description'),
-        gender: inputs.namedItem('gender'),
-        pesel: inputs.namedItem('pesel'),
-        dob: inputs.namedItem('dob'),
-    };
     
     const div1 = document.querySelector('.form-bottom');
     const oldItem1 = document.querySelector('p');
