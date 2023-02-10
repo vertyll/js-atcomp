@@ -5,67 +5,62 @@ function peselCheck(pesel) {
      if(pesel.length != 11) {
           return false;
      }
+
+     let year = parseInt(pesel.substring(0,2),10);
+     let month = parseInt(pesel.substring(2,4),10);
+     let day = parseInt(pesel.substring(4,6),10);
      
-     let rok = parseInt(pesel.substring(0,2),10);
-     let miesiac = parseInt(pesel.substring(2,4),10);
-     let dzien = parseInt(pesel.substring(4,6),10);
-     
-     if(miesiac > 80) {
-          rok = rok + 1800;
-          miesiac = miesiac - 80;
+     if(month > 80) {
+          year = year + 1800;
+          month = month - 80;
      }
-     else if(miesiac > 60) {
-          rok = rok + 2200;
-          miesiac = miesiac - 60;
+     else if(month > 60) {
+          year = year + 2200;
+          month = month - 60;
      }
-     else if (miesiac > 40) {
-          rok = rok + 2100;
-          miesiac = miesiac - 40;
+     else if (month > 40) {
+          year = year + 2100;
+          month = month - 40;
      }
-     else if (miesiac > 20) {
-          rok = rok + 2000;
-          miesiac = miesiac - 20;
+     else if (month > 20) {
+          year = year + 2000;
+          month = month - 20;
      }
      else {
-          rok += 1900;
+          year += 1900;
      }
-     let urodzony = new Date();
-     urodzony.setFullYear(rok, miesiac, dzien);
+     let brithday = new Date();
+     brithday.setFullYear(year, month, day);
 
-     let wagi = [9,7,3,1,9,7,3,1,9,7];
-     let suma = 0;
+     let weight = [9,7,3,1,9,7,3,1,9,7];
+     let sum = 0;
     
-     for(let i = 0; i < wagi.length; i++) {
-          suma += (parseInt(pesel.substring(i, i+1), 10) * wagi[i]);
+     for(let i = 0; i < weight.length; i++) {
+          sum += (parseInt(pesel.substring(i, i+1), 10) * weight[i]);
      }
-          suma = suma % 10;
-     let valid = (suma === parseInt(pesel.substring(10,11),10));
-    
+          sum = sum % 10;
+     let valid = (sum === parseInt(pesel.substring(10,11),10));
+
+     if(!pesel == valid){
+          customAlert("Pesel jest niepoprawny");
+          return;
+     }
+
      if(parseInt(pesel.substring(9,10),10) % 2 === 1) { 
-          plec='Mężczyzna';
+          gender = 'Mężczyzna';
      } else {
-          plec='Kobieta';
+          gender = 'Kobieta';
      }
 
-     console.log(pesel);
-     console.log(dzien);
-     console.log(miesiac);
-     console.log(rok);
-     console.log(plec);
-
-     document.getElementById('dob').value = `${dzien}.${miesiac}.${rok}`;
-     document.getElementById('gender').value = plec;
+     document.getElementById('dob').value = `${day}.${month}.${year}`;
+     document.getElementById('gender').value = gender ;
 
      const now = new Date();
      let aktualnaData = now.getFullYear();
 
-     let wiek = aktualnaData - rok;
+     let age = aktualnaData - year;
 
-     console.log(wiek);
-     console.log(aktualnaData);
-
-     document.getElementById('age').value = wiek;
-     return {valid:valid,sex:plec,date:urodzony};
+     document.getElementById('age').value = age;
 }
 
 export {peselCheck};

@@ -39,7 +39,7 @@ function validateForm() {
     }
     else if(!regex.pesel.test(formValues.pesel.value))
     {
-        customAlert("Proszę wprowadzić poprawny PESEL");
+        customAlert("PESEL musi zawierać 11 znaków");
     }
     else if(formValues.description.value == "")
     {
