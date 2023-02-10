@@ -18,10 +18,11 @@ function validateForm() {
         name: /^[a-zA-Z]+$/,
         surname: /^[a-zA-Z]+$/,
         email: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
-        age: /^[0-9]+$/
+        age: /^[0-9]+$/,
+        pesel: /^[0-9]{11}/
     };
 
-    if (formValues.name.value == "" && formValues.surname.value == "" && formValues.age.value == "" && formValues.email.value == "" && formValues.description.value == "") {
+    if (formValues.name.value == "" && formValues.surname.value == "" && formValues.email.value == "" && formValues.pesel.value == "" && formValues.description.value == "") {
         customAlert("Proszę wypełnić wszystkie pola");
     }
     else if(!regex.name.test(formValues.name.value))
@@ -32,13 +33,13 @@ function validateForm() {
     {
         customAlert("Proszę wprowadzić poprawne nazwisko");
     }
-    else if(!regex.age.test(formValues.age.value))
-    {
-        customAlert("Proszę wprowadzić poprawny wiek");
-    }
     else if(!regex.email.test(formValues.email.value))
     {
         customAlert("Proszę wprowadzić poprawny email");
+    }
+    else if(!regex.pesel.test(formValues.pesel.value))
+    {
+        customAlert("Proszę wprowadzić poprawny PESEL");
     }
     else if(formValues.description.value == "")
     {

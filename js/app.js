@@ -6,6 +6,6 @@ const pesel = document.getElementById('pesel');
 
 form.addEventListener('submit', function(e) {
     e.preventDefault();
-//    validateForm();
+    validateForm();
     peselCheck(pesel.value);
 });

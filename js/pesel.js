@@ -2,6 +2,10 @@ import {customAlert} from './alert.js';
 
 function peselCheck(pesel) {
 
+     if(pesel.length != 11) {
+          return false;
+     }
+     
      let rok = parseInt(pesel.substring(0,2),10);
      let miesiac = parseInt(pesel.substring(2,4),10);
      let dzien = parseInt(pesel.substring(4,6),10);
