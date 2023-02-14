@@ -31,11 +31,11 @@ function customAlert(message) {
     );
     alert.innerHTML = `<span>${message}</span>`;
     alert.appendChild(alertButton);
-    alertButton.addEventListener('click', (e) => {
+    alertButton.addEventListener('click', () => {
         alert.remove();
     });
 
     document.body.appendChild(alert);
-};
+}
 
 export {customAlert};

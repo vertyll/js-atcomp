@@ -2,41 +2,55 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>Forumlarz JS</title>
+    <title>ATComp</title>
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
+    <nav class="sidebar">
+        <ul>
+            <li><a href="index.html">Formularz</a></li>
+            <li><a href="posts.html">Posty</a></li>
+        </ul>
+    </nav>
     <div class="form">
         <div class="form-top">
             <h2>Formularz</h2>
             <form id="form">
-                <div class="input-wrap>">                        
-                    <input type="text" name="name" placeholder="Wpisz imię">
+                <div class="input-wrap>">
+                    <label for="name">Wprowadź imię</label>
+                    <input type="text" name="name" id="name">
                 </div>
                 <div class="input-wrap>">
-                    <input type="text" name="surname" placeholder="Wpisz nazwisko">
+                    <label for="surname">Wprawadź nazwisko</label>
+                    <input type="text" name="surname" id="surname">
                 </div>
                 <div class="input-wrap>">
-                    <input type="email" name="email" placeholder="Wpisz e-mail">
+                    <label for="email">Wprowadź adres e-mail</label>
+                    <input type="email" name="email" id="email">
                 </div>
                 <div class="input-wrap>">
-                    <textarea class="textarea" name="description"></textarea>
+                    <label for="description">Wprowadź opis</label>
+                    <textarea class="textarea" name="description" id="description"></textarea>
                 </div>
                 <div class="input-wrap>">
-                    <input type="text" name="pesel" id="pesel" placeholder="Podaj swój PESEL">
+                    <label for="pesel">Wprowadź swój numer PESEL</label>
+                    <input type="text" name="pesel" id="pesel">
                 </div>
                 <div class="input-wrap">
-                    <input type="" name="dob" id="dob" placeholder="Podaj swoją datę urodzenia" disabled>
+                    <label for="dob">Podaj swoją datę urodzenia</label>
+                    <input type="text" name="dob" id="dob" disabled>
                 </div>
                 <div class="input-wrap">
-                    <input type="number" name="age" id="age" placeholder="Wpisz wiek" disabled>
+                    <label for="age">Podaj swój wiek</label>
+                    <input type="number" name="age" id="age" disabled>
                 </div>
                 <div class="input-wrap>">
+                    <label for="gender">Wybierz swoją płeć</label>
                     <select name="gender" id="gender" disabled>
                         <option value="Kobieta" >Kobieta</option>
                         <option value="Mężczyzna">Mężczyzna</option>
                     </select>
-                    </div>
+                </div>
                 <div class="input-wrap>">
                     <button id="button" class="button">Zapisz</button>
                 </div>
