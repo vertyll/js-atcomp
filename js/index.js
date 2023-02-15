@@ -5,7 +5,7 @@ const routes = {
             return import("./../pages/home.html")
         },
         scripts() {
-            return import("./validateInit.js")
+            return
         }
     },
     '/form' : {
@@ -23,7 +23,7 @@ const routes = {
         scripts() {
             return import("./posts.js")
         }  
-    }
+    },   
 }
 
 const loadPage = async () => {
@@ -35,3 +35,14 @@ const loadPage = async () => {
 }
 
 loadPage()
+
+const switchPage = () => {
+    const links = document.querySelectorAll('a')
+    links.forEach( (link) => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault()
+            window.history.pushState(null, null, link.href)
+            loadPage()
+        })
+    })
+}
