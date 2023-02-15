@@ -1,24 +1,44 @@
-<div class="filter">
-    <input type="text" id="filterUserId" placeholder="Wyszukaj id użytkownika">
-    <input type="text" id="filterId" placeholder="Wyszukaj id">
-    <input type="text" id="filterTitle" placeholder="Wyszukaj tytuł">
-    <input type="text" id="filterBody" placeholder="Wyszukaj treść">
-    <button id="filter-button" class="button">Filtruj</button>
-</div>
-<div class="posts">
-    <h2>Posty</h2>
-    <div class="posts-list">
-        <table>
-            <thead>
-                <tr>
-                    <th>Id użytkownika</th>
-                    <th>Id</th>
-                    <th>Tytuł</th>
-                    <th>Treść</th>
-                </tr>
-            </thead>
-            <tbody id="posts-list">
-            </tbody>
-        </table>
+<header>
+    <h1>Posty</h1>
+</header>
+<main>
+    <div id="filter-form-container">
+        <form name="filterForm" id="filterForm">
+            <div class="input-wrap-filter">
+                <label for="author">Autor</label>
+                <input type="text" name="author" id="author">
+            </div>
+            <div class="input-wrap-filter">
+                <label for="title">Tytuł</label>
+                <input type="text" name="title" id="title">
+            </div>
+            <div class="input-wrap-filter">
+                <label for="content">Treść</label>
+                <input type="text" name="content" id="content">
+            </div>
+            <div class="input-wrap-filter">
+                <label for="sortatt">Sortowanie według:</label>   
+                <select name="sortatt" id="sortatt">
+                    <option selected value="Autora">Autora</option>
+                    <option value="Tytuł">Tytułu</option>
+                    <option value="Treści">Treści</option>
+                </select>
+            </div>
+            <div class="input-wrap-filter">
+                <label for="sortad">Sposób sortowania:</label>   
+                <select id="sortad" name="sortad">
+                    <option selected value="Rosnąco">Rosnąco</option>
+                    <option value="Malejąco">Malejąco</option>
+                </select>
+            </div>
+            <div class="input-wrap-filter">
+                <button id="filter">Filtruj</button>
+            </div>
+            <div class="input-wrap-filter">
+                <button id="clean">Wyczyść</button>
+            </div>
+        </form>
     </div>
-</div>
+    <div id="posts-bottom">
+    </div>
+</main>

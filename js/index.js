@@ -1,9 +1,9 @@
 const path = window.location.pathname
 const routes = {
-    404 : import("./../pages/404.html"),
+    404 : import('./../pages/404.html'),
     '/' : {
         html() {
-            return import("./../pages/home.html")
+            return import('./../pages/home.html')
         },
         scripts() {
             return
@@ -11,18 +11,18 @@ const routes = {
     },
     '/form' : {
         html() {
-            return import("./../pages/form.html")
+            return import('./../pages/form.html')
         },
         scripts() {
-            return import("./validateInit.js")
+            return import('./validateInit.js')
         }
     },
     '/posts' : {
         html() {
-            return import("../pages/posts.html")
+            return import('../pages/posts.html')
         },
         scripts() {
-            return import("./posts.js")
+            return import('./posts.js')
         }  
     },
 }

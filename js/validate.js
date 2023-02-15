@@ -1,5 +1,5 @@
-import {customAlert} from './alert.js';
-import {validatePesel} from './pesel.js';
+import { customAlert } from './alert.js'
+import { validatePesel } from './pesel.js'
 
 const inputs = document.getElementById('form').elements, pesel = document.getElementById('pesel'), formValues = {
     name: inputs.namedItem('name'),
@@ -20,54 +20,54 @@ const inputs = document.getElementById('form').elements, pesel = document.getEle
 
 function validateForm() {
 
-    if (formValues.name.value === "" && formValues.surname.value === "" && formValues.email.value === "" && formValues.description.value === "" && formValues.pesel.value === "") {
-        customAlert("Proszę wypełnić wszystkie pola");
+    if (formValues.name.value === '' && formValues.surname.value === '' && formValues.email.value === '' && formValues.description.value === '' && formValues.pesel.value === '') {
+        customAlert('Proszę wypełnić wszystkie pola')
     } else if (!regex.name.test(formValues.name.value)) {
-        customAlert("Proszę wprowadzić poprawne imie");
+        customAlert('Proszę wprowadzić poprawne imie')
     } else if (!regex.surname.test(formValues.surname.value)) {
-        customAlert("Proszę wprowadzić poprawne nazwisko");
+        customAlert('Proszę wprowadzić poprawne nazwisko')
     } else if (!regex.email.test(formValues.email.value)) {
-        customAlert("Proszę wprowadzić poprawny email");
-    } else if (formValues.description.value === "") {
-        customAlert("Proszę wprowadzić opis");
+        customAlert('Proszę wprowadzić poprawny email')
+    } else if (formValues.description.value === '') {
+        customAlert('Proszę wprowadzić opis')
     } else if (!regex.pesel.test(formValues.pesel.value)) {
-        customAlert("Proszę wprowadzić poprawny PESEL");
+        customAlert('Proszę wprowadzić poprawny PESEL')
     } else {
-        validatePesel(pesel.value);
+        validatePesel(pesel.value)
     }
 }
 
 function checkName() {
-    if (regex.name.test(formValues.name.value)) formValues.name.style.border = "0.1rem solid green";
-    else formValues.name.style.border = "0.1rem solid red";
+    if (regex.name.test(formValues.name.value)) formValues.name.style.border = '0.1rem solid green'
+    else formValues.name.style.border = '0.1rem solid red'
 }
 
 function checkSurname() {
-    if (regex.surname.test(formValues.surname.value)) formValues.surname.style.border = "0.1rem solid green";
-    else formValues.surname.style.border = "0.1rem solid red";
+    if (regex.surname.test(formValues.surname.value)) formValues.surname.style.border = '0.1rem solid green'
+    else formValues.surname.style.border = '0.1rem solid red'
 }
 
 function checkEmail() {
-    if (regex.email.test(formValues.email.value)) formValues.email.style.border = "0.1rem solid green";
-    else formValues.email.style.border = "0.1rem solid red";
+    if (regex.email.test(formValues.email.value)) formValues.email.style.border = '0.1rem solid green'
+    else formValues.email.style.border = '0.1rem solid red'
 }
 
 function checkDescription() {
-    if (formValues.description.value !== "") formValues.description.style.border = "0.1rem solid green";
-    else formValues.description.style.border = "0.1rem solid red";
+    if (formValues.description.value !== '') formValues.description.style.border = '0.1rem solid green'
+    else formValues.description.style.border = '0.1rem solid red'
 }
 
 function checkPesel() {
-    if (regex.pesel.test(formValues.pesel.value)) formValues.pesel.style.border = "0.1rem solid green";
-    else formValues.pesel.style.border = "0.1rem solid red";
+    if (regex.pesel.test(formValues.pesel.value)) formValues.pesel.style.border = '0.1rem solid green'
+    else formValues.pesel.style.border = '0.1rem solid red'
 }
 
 function addInfo() {
 
-    const div1 = document.querySelector('.form-bottom');
-    const oldItem1 = document.querySelector('p');
-    const newItem1 = document.createElement('p');
-    newItem1.innerHTML = `
+    const div = document.querySelector('.form-bottom')
+    const oldItem = document.querySelector('p')
+    const newItem = document.createElement('p')
+    newItem.innerHTML = `
     <h2>Wynik</h2><br>
     <p>Imie: ${formValues.name.value}</p>
     <p>Nazwisko: ${formValues.surname.value}</p>
@@ -78,7 +78,7 @@ function addInfo() {
     <p>Wiek: ${formValues.age.value}</p>
     <p>Płeć: ${formValues.gender.value}</p>
     `;
-    div1.replaceChild(newItem1, oldItem1);
+    div.replaceChild(newItem, oldItem)
 }
 
 export {

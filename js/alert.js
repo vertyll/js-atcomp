@@ -1,8 +1,8 @@
 function customAlert(message) {
-    const alert = document.createElement('div');
-    const alertButton = document.createElement('button');
-    alertButton.innerHTML = 'OK';
-    alert.classList.add('alert');
+    const alert = document.createElement('div')
+    const alertButton = document.createElement('button')
+    alertButton.innerHTML = 'OK'
+    alert.classList.add('alert')
     alert.setAttribute('style',
         `
         position: fixed; 
@@ -16,7 +16,7 @@ function customAlert(message) {
         border: 0.1rem solid black;
         padding: 10px;
         `
-    );
+    )
     alertButton.setAttribute('style',
         `
         display: flex;
@@ -28,14 +28,14 @@ function customAlert(message) {
         border-radius: 0.5rem;
         margin-top: 0.8rem;
         `
-    );
+    )
     alert.innerHTML = `<span>${message}</span>`;
     alert.appendChild(alertButton);
     alertButton.addEventListener('click', () => {
-        alert.remove();
-    });
+        alert.remove()
+    })
 
-    document.body.appendChild(alert);
+    document.body.appendChild(alert)
 }
 
-export {customAlert};
+export { customAlert }
