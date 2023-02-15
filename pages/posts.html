@@ -5,8 +5,8 @@
     <div id="filter-form-container">
         <form name="filterForm" id="filterForm">
             <div class="input-wrap-filter">
-                <label for="author">Autor</label>
-                <input type="text" name="author" id="author">
+                <label for="userId">UserId</label>
+                <input type="text" name="userId" id="userId">
             </div>
             <div class="input-wrap-filter">
                 <label for="title">Tytuł</label>
@@ -19,23 +19,16 @@
             <div class="input-wrap-filter">
                 <label for="sortatt">Sortowanie według:</label>   
                 <select name="sortatt" id="sortatt">
-                    <option selected value="Autora">Autora</option>
+                    <option selected value="UserId">User Id</option>
                     <option value="Tytuł">Tytułu</option>
                     <option value="Treści">Treści</option>
-                </select>
-            </div>
-            <div class="input-wrap-filter">
-                <label for="sortad">Sposób sortowania:</label>   
-                <select id="sortad" name="sortad">
-                    <option selected value="Rosnąco">Rosnąco</option>
-                    <option value="Malejąco">Malejąco</option>
                 </select>
             </div>
             <div class="input-wrap-filter">
                 <button id="filter">Filtruj</button>
             </div>
             <div class="input-wrap-filter">
-                <button id="clean">Wyczyść</button>
+                <button id="reset">Resetuj</button>
             </div>
         </form>
     </div>
