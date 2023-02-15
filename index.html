@@ -2,64 +2,24 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>ATComp</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Router</title>
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-    <nav class="sidebar">
-        <ul>
-            <li><a href="index.html">Formularz</a></li>
-            <li><a href="posts.html">Posty</a></li>
-        </ul>
-    </nav>
-    <div class="form">
-        <div class="form-top">
-            <h2>Formularz</h2>
-            <form id="form">
-                <div class="input-wrap>">
-                    <label for="name">Wprowadź imię</label>
-                    <input type="text" name="name" id="name">
-                </div>
-                <div class="input-wrap>">
-                    <label for="surname">Wprawadź nazwisko</label>
-                    <input type="text" name="surname" id="surname">
-                </div>
-                <div class="input-wrap>">
-                    <label for="email">Wprowadź adres e-mail</label>
-                    <input type="email" name="email" id="email">
-                </div>
-                <div class="input-wrap>">
-                    <label for="description">Wprowadź opis</label>
-                    <textarea class="textarea" name="description" id="description"></textarea>
-                </div>
-                <div class="input-wrap>">
-                    <label for="pesel">Wprowadź swój numer PESEL</label>
-                    <input type="text" name="pesel" id="pesel">
-                </div>
-                <div class="input-wrap">
-                    <label for="dob">Podaj swoją datę urodzenia</label>
-                    <input type="text" name="dob" id="dob" disabled>
-                </div>
-                <div class="input-wrap">
-                    <label for="age">Podaj swój wiek</label>
-                    <input type="number" name="age" id="age" disabled>
-                </div>
-                <div class="input-wrap>">
-                    <label for="gender">Wybierz swoją płeć</label>
-                    <select name="gender" id="gender" disabled>
-                        <option value="Kobieta" >Kobieta</option>
-                        <option value="Mężczyzna">Mężczyzna</option>
-                    </select>
-                </div>
-                <div class="input-wrap>">
-                    <button id="button" class="button">Zapisz</button>
-                </div>
-            </form>
+    <div class="flex-container">
+        <div class="sidebar">
+            <nav class="navbar">
+                <ul>
+                    <li>Home</li>
+                    <li>Form</li>
+                    <li>Posts</li>
+                </ul>
+            </nav>
         </div>
-        <div class="form-bottom">
-            <p></p>
-        </div>
+        <div class ="template" id="template"></div>
     </div>
-    <script type="module" src="js/app.js"></script>
+    <script type="module" src="js/index.js"></script>
 </body>
 </html>

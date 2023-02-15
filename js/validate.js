@@ -18,7 +18,6 @@ const inputs = document.getElementById('form').elements, pesel = document.getEle
     pesel: /^[0-9]{11}$/
 };
 
-
 function validateForm() {
 
     if (formValues.name.value === "" && formValues.surname.value === "" && formValues.email.value === "" && formValues.description.value === "" && formValues.pesel.value === "") {
