@@ -13,7 +13,7 @@ const inputs = document.getElementById('form').elements, pesel = document.getEle
 }, regex = {
     name: /^[a-zA-Z]+$/,
     surname: /^[a-zA-Z]+$/,
-    email: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g,
+    email: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
     age: /^(1[89]|[2-9]\d)$/gm,
     pesel: /^[0-9]{11}$/
 };
