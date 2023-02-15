@@ -34,15 +34,16 @@ const loadPage = async () => {
     
 }
 
-loadPage()
+const error404 = () => {
+    document.getElementById('template').innerHTML = "<h1>404</h1>"
+}
 
 const switchPage = () => {
-    const links = document.querySelectorAll('a')
-    links.forEach( (link) => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault()
-            window.history.pushState(null, null, link.href)
-            loadPage()
-        })
-    })
+    if (routes[path]) {
+        loadPage()
+    } else {
+        error404()
+    }
 }
+
+switchPage()
