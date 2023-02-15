@@ -1,5 +1,6 @@
 const path = window.location.pathname
 const routes = {
+    404 : import("./../pages/404.html"),
     '/' : {
         html() {
             return import("./../pages/home.html")
@@ -23,7 +24,7 @@ const routes = {
         scripts() {
             return import("./posts.js")
         }  
-    },   
+    },
 }
 
 const loadPage = async () => {
@@ -34,16 +35,18 @@ const loadPage = async () => {
     
 }
 
-const error404 = () => {
-    document.getElementById('template').innerHTML = "<h1>404</h1>"
+const load404 = async () => {
+    routes[404].then( (html) => {
+        document.getElementById('template').innerHTML = html
+    })
 }
 
-const switchPage = () => {
+const router = () => {
     if (routes[path]) {
         loadPage()
     } else {
-        error404()
+        load404()
     }
 }
 
-switchPage()
+router()
