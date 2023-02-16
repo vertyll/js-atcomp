@@ -5,10 +5,9 @@ const getPostsData = async () => {
     return res.data
 }
 
-const getPosts = async () => {
+const uploadePosts = async () => {
     const posts = await getPostsData()
     const postsContainer = document.getElementById('posts-bottom')
-    postsContainer.innerHTML = ''
     posts.forEach( (post) => {
         postsContainer.innerHTML += `
             <table>
@@ -35,4 +34,4 @@ const getPosts = async () => {
     })
 }
 
-getPosts()
+uploadePosts()

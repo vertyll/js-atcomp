@@ -1,3 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sidebar{
+    width: 20%;
+    height: 100%;
+    padding: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li {
+    padding: 10px;
+    border-bottom: 1px solid #fff;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.sidebar ul li a:hover {
+    color: #f00;
+}
+
+.template {
+    width: 80%;
+    height: 100%;
+    background: #fff;
+    padding: 20px;
+}
+
 #preLoader {
     position: fixed;
     top: 0;
