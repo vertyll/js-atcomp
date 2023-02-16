@@ -13,23 +13,19 @@ const loadPhotosGetUrl = () => {
 
 const loadPhotos = async (albumId) => {
     const photos = await getPhotosAlbums(albumId)
-    const photosContainer = document.getElementById('photos')
+    const photosContainer = document.getElementById('slider')
     photos.forEach( (photo) => {
-        const photoContainer = document.createElement('div')
-        photoContainer.classList.add('photo')
-
-        const photoTitle = document.createElement('h3')
-        photoTitle.innerHTML = photo.title
-
         const photoImage = document.createElement('img')
         photoImage.src = photo.thumbnailUrl
 
-        photosContainer.appendChild(photoContainer)
-        photoContainer.appendChild(photoTitle)
-        photoContainer.appendChild(photoImage)
+        photosContainer.appendChild(photoImage)
     })
 }
 
 loadPhotosGetUrl()
+
+
+
+
 
 
