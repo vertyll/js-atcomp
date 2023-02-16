@@ -25,6 +25,14 @@ const routes = {
             return import('./posts.js')
         }  
     },
+    '/albums' : {
+        html() {
+            return import('../pages/albums.html')
+        },
+        scripts() {
+            return import('./albums.js')
+        }
+    }
 }
 
 const loadPage = async () => {
