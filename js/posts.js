@@ -10,21 +10,11 @@ const getCoomentsData = async (postId) => {
     return res.data
 }
 
-const uploadeComments = async (postId) => {
-    const comments = await getCoomentsData(postId)
-    const commentsContainer = document.getElementById(`comments-${postId}`)
-    comments.forEach( (comment) => {
-        const commentContainer = document.createElement('div')
-        commentContainer.classList.add('comment')
-        commentContainer.innerHTML = `
-            <h3>${comment.name}</h3>
-            <p>${comment.body}</p>
-        `
-        commentsContainer.appendChild(commentContainer)
-    })
+const postEngine = async (postId) => {
 
     const posts = await getPostsData()
     const postsContainer = document.getElementById('posts')
+
     posts.forEach( (post) => {
         const postContainer = document.createElement('div')
         postContainer.classList.add('post')
@@ -35,25 +25,13 @@ const uploadeComments = async (postId) => {
         const postBody = document.createElement('p')
         postBody.innerHTML = post.body
 
-        const postButton = document.createElement('button')
-        postButton.innerHTML = 'Comments'
-        postButton.classList.add('btn')
+        const buttonShow = document.createElement('button')
+        buttonShow.innerHTML = 'Comments'
+        buttonShow.classList.add('btn-show')
 
         const buttonHide = document.createElement('button')
         buttonHide.innerHTML = 'Hide'
-        buttonHide.classList.add('btn')
-
-        postButton.addEventListener('click', () => {
-            uploadeComments(post.id)
-            postButton.style.display = 'none'
-            postContainer.appendChild(buttonHide)
-        })
-        
-        buttonHide.addEventListener('click', () => {
-            postButton.style.display = 'block'
-            buttonHide.style.display = 'none'
-            postContainer.removeChild(postComments)
-        })
+        buttonHide.classList.add('btn-hide')
 
         const postComments = document.createElement('div')
         postComments.id = `comments-${post.id}`
@@ -62,13 +40,40 @@ const uploadeComments = async (postId) => {
         postsContainer.appendChild(postContainer)
         postContainer.appendChild(postTitle)
         postContainer.appendChild(postBody)
-        postContainer.appendChild(postButton)
+        postContainer.appendChild(buttonShow)
+        postContainer.appendChild(buttonHide)
         postContainer.appendChild(postComments)
+
+        buttonShow.addEventListener('click', async () => {
+            const comments = await getCoomentsData(post.id)
+            comments.forEach( (comment) => {
+                const commentContainer = document.createElement('div')
+                commentContainer.classList.add('comment')
+
+                const commentName = document.createElement('h3')
+                commentName.innerHTML = comment.name
+
+                const commentEmail = document.createElement('p')
+                commentEmail.innerHTML = comment.email
+
+                const commentBody = document.createElement('p')
+                commentBody.innerHTML = comment.body
+
+                postComments.appendChild(commentContainer)
+                commentContainer.appendChild(commentName)
+                commentContainer.appendChild(commentEmail)
+                commentContainer.appendChild(commentBody)
+                buttonShow.style.display = 'none'
+                buttonHide.style.display = 'block'
+            })
+        })
+        buttonHide.style.display = 'none'
+        buttonHide.addEventListener('click', () => {
+            postComments.innerHTML = ''
+            buttonShow.style.display = 'block'
+            buttonHide.style.display = 'none'
+        })
     })
 }
 
-uploadeComments()
-
-
-
-
+postEngine()
