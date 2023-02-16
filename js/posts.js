@@ -5,25 +5,6 @@ const getPostsData = async () => {
     return res.data
 }
 
-const uploadePosts = async () => {
-    const posts = await getPostsData()
-    const postsContainer = document.getElementById('posts')
-    posts.forEach( (post) => {
-        const postContainer = document.createElement('div')
-        postContainer.classList.add('post')
-        postContainer.innerHTML = `
-            <h2>${post.title}</h2>
-            <p>${post.body}</p>
-            <button class="btn${post.id}">Comments</button>
-
-            <div class="comments" id="comments-${post.id}"></div>
-        `
-        postsContainer.appendChild(postContainer)
-    })
-}
-
-uploadePosts()
-
 const getCoomentsData = async (postId) => {
     const res = await axios.get(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`)
     return res.data
@@ -41,4 +22,53 @@ const uploadeComments = async (postId) => {
         `
         commentsContainer.appendChild(commentContainer)
     })
+
+    const posts = await getPostsData()
+    const postsContainer = document.getElementById('posts')
+    posts.forEach( (post) => {
+        const postContainer = document.createElement('div')
+        postContainer.classList.add('post')
+
+        const postTitle = document.createElement('h2')
+        postTitle.innerHTML = post.title
+
+        const postBody = document.createElement('p')
+        postBody.innerHTML = post.body
+
+        const postButton = document.createElement('button')
+        postButton.innerHTML = 'Comments'
+        postButton.classList.add('btn')
+
+        const buttonHide = document.createElement('button')
+        buttonHide.innerHTML = 'Hide'
+        buttonHide.classList.add('btn')
+
+        postButton.addEventListener('click', () => {
+            uploadeComments(post.id)
+            postButton.style.display = 'none'
+            postContainer.appendChild(buttonHide)
+        })
+        
+        buttonHide.addEventListener('click', () => {
+            postButton.style.display = 'block'
+            buttonHide.style.display = 'none'
+            postContainer.removeChild(postComments)
+        })
+
+        const postComments = document.createElement('div')
+        postComments.id = `comments-${post.id}`
+        postComments.classList.add('comments')
+
+        postsContainer.appendChild(postContainer)
+        postContainer.appendChild(postTitle)
+        postContainer.appendChild(postBody)
+        postContainer.appendChild(postButton)
+        postContainer.appendChild(postComments)
+    })
 }
+
+uploadeComments()
+
+
+
+
