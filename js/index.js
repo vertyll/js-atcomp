@@ -32,6 +32,14 @@ const routes = {
         scripts() {
             return import('./albums.js')
         }
+    },
+    '/photos' : {
+        html() {
+            return import('../pages/photos.html')
+        },
+        scripts() {
+            return import('./photos.js')
+        }
     }
 }
 
@@ -53,7 +61,7 @@ const router = () => {
     if (routes[path]) {
         loadPage()
     } else {
-        load404()
+//        load404()
     }
 }
 
