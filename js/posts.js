@@ -1,14 +1,4 @@
-import axios from 'axios'
-
-const getPostsData = async () => {
-    const res = await axios.get('https://jsonplaceholder.typicode.com/posts/')
-    return res.data
-}
-
-const getCoomentsData = async (postId) => {
-    const res = await axios.get(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`)
-    return res.data
-}
+import { getPostsData, getCoomentsData } from './api.js'
 
 const postEngine = async (postId) => {
 
@@ -25,13 +15,9 @@ const postEngine = async (postId) => {
         const postBody = document.createElement('p')
         postBody.innerHTML = post.body
 
-        const buttonShow = document.createElement('button')
-        buttonShow.innerHTML = 'Comments'
-        buttonShow.classList.add('btn-show')
-
-        const buttonHide = document.createElement('button')
-        buttonHide.innerHTML = 'Hide'
-        buttonHide.classList.add('btn-hide')
+        const buttonShowHide = document.createElement('button')
+        buttonShowHide.innerHTML = 'Comments'
+        buttonShowHide.classList.add('btn-show-hide')
 
         const postComments = document.createElement('div')
         postComments.id = `comments-${post.id}`
@@ -40,12 +26,14 @@ const postEngine = async (postId) => {
         postsContainer.appendChild(postContainer)
         postContainer.appendChild(postTitle)
         postContainer.appendChild(postBody)
-        postContainer.appendChild(buttonShow)
-        postContainer.appendChild(buttonHide)
+        postContainer.appendChild(buttonShowHide)
         postContainer.appendChild(postComments)
 
-        buttonShow.addEventListener('click', async () => {
+        buttonShowHide.addEventListener('click', async () => {
             const comments = await getCoomentsData(post.id)
+            const commentsContainer = document.getElementById(`comments-${post.id}`)
+            commentsContainer.innerHTML = ''
+
             comments.forEach( (comment) => {
                 const commentContainer = document.createElement('div')
                 commentContainer.classList.add('comment')
@@ -59,20 +47,18 @@ const postEngine = async (postId) => {
                 const commentBody = document.createElement('p')
                 commentBody.innerHTML = comment.body
 
-                postComments.appendChild(commentContainer)
+                commentsContainer.appendChild(commentContainer)
                 commentContainer.appendChild(commentName)
                 commentContainer.appendChild(commentEmail)
                 commentContainer.appendChild(commentBody)
-                buttonShow.style.display = 'none'
-                buttonHide.style.display = 'block'
             })
-        })
-        buttonHide.style.display = 'none'
-        buttonHide.addEventListener('click', () => {
-            postComments.innerHTML = ''
-            buttonShow.style.display = 'block'
-            buttonHide.style.display = 'none'
-        })
+            if (commentsContainer.style.display === 'block') {
+                commentsContainer.style.display = 'none'
+            }
+            else {
+                commentsContainer.style.display = 'block'
+            }
+        }) 
     })
 }
 

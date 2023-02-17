@@ -1,6 +1,6 @@
 const path = window.location.pathname
 const routes = {
-    404 : import('./../pages/404.html'),
+    '404' : import('./../pages/404.html'),
     '/' : {
         html() {
             return import('./../pages/home.html')
@@ -14,7 +14,7 @@ const routes = {
             return import('./../pages/form.html')
         },
         scripts() {
-            return import('./validateInit.js')
+            return import('./validateForm.js')
         }
     },
     '/posts' : {
@@ -61,7 +61,7 @@ const router = () => {
     if (routes[path]) {
         loadPage()
     } else {
-//        load404()
+        load404()
     }
 }
 

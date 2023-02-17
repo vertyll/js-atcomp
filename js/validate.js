@@ -1,6 +1,3 @@
-import { customAlert } from './alert.js'
-import { validatePesel } from './pesel.js'
-
 const inputs = document.getElementById('form').elements, pesel = document.getElementById('pesel'), formValues = {
     name: inputs.namedItem('name'),
     surname: inputs.namedItem('surname'),
@@ -18,23 +15,23 @@ const inputs = document.getElementById('form').elements, pesel = document.getEle
     pesel: /^[0-9]{11}$/
 };
 
-function validateForm() {
+function addInfo() {
 
-    if (formValues.name.value === '' && formValues.surname.value === '' && formValues.email.value === '' && formValues.description.value === '' && formValues.pesel.value === '') {
-        customAlert('Proszę wypełnić wszystkie pola')
-    } else if (!regex.name.test(formValues.name.value)) {
-        customAlert('Proszę wprowadzić poprawne imie')
-    } else if (!regex.surname.test(formValues.surname.value)) {
-        customAlert('Proszę wprowadzić poprawne nazwisko')
-    } else if (!regex.email.test(formValues.email.value)) {
-        customAlert('Proszę wprowadzić poprawny email')
-    } else if (formValues.description.value === '') {
-        customAlert('Proszę wprowadzić opis')
-    } else if (!regex.pesel.test(formValues.pesel.value)) {
-        customAlert('Proszę wprowadzić poprawny PESEL')
-    } else {
-        validatePesel(pesel.value)
-    }
+    const div = document.querySelector('.form-bottom')
+    const oldItem = document.querySelector('p')
+    const newItem = document.createElement('p')
+    newItem.innerHTML = `
+    <h2>Wynik</h2><br>
+    <p>Imie: ${formValues.name.value}</p>
+    <p>Nazwisko: ${formValues.surname.value}</p>
+    <p>Email: ${formValues.email.value}</p>
+    <p>Opis: ${formValues.description.value}</p>
+    <p>PESEL: ${formValues.pesel.value}</p>
+    <p>Data urodzenia: ${formValues.dob.value}</p>
+    <p>Wiek: ${formValues.age.value}</p>
+    <p>Płeć: ${formValues.gender.value}</p>
+    `;
+    div.replaceChild(newItem, oldItem)
 }
 
 function checkName() {
@@ -62,31 +59,4 @@ function checkPesel() {
     else formValues.pesel.style.border = '0.1rem solid red'
 }
 
-function addInfo() {
-
-    const div = document.querySelector('.form-bottom')
-    const oldItem = document.querySelector('p')
-    const newItem = document.createElement('p')
-    newItem.innerHTML = `
-    <h2>Wynik</h2><br>
-    <p>Imie: ${formValues.name.value}</p>
-    <p>Nazwisko: ${formValues.surname.value}</p>
-    <p>Email: ${formValues.email.value}</p>
-    <p>Opis: ${formValues.description.value}</p>
-    <p>PESEL: ${formValues.pesel.value}</p>
-    <p>Data urodzenia: ${formValues.dob.value}</p>
-    <p>Wiek: ${formValues.age.value}</p>
-    <p>Płeć: ${formValues.gender.value}</p>
-    `;
-    div.replaceChild(newItem, oldItem)
-}
-
-export {
-    validateForm,
-    addInfo,
-    checkName,
-    checkSurname,
-    checkEmail,
-    checkDescription,
-    checkPesel
-}
+export { formValues, regex, pesel, addInfo, checkName, checkSurname, checkEmail, checkDescription, checkPesel }

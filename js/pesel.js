@@ -83,9 +83,4 @@ function validatePesel(pesel) {
     }
 }
 
-export {
-    dobFromPesel,
-    ageFromPesel,
-    genderFromPesel,
-    validatePesel
-}
+export { validatePesel }
