@@ -1,5 +1,26 @@
 import { getPhotosAlbums } from './api.js'
 
+const createPhotosContainer = () => {
+    const app = document.getElementById('app')
+    const pageContent = document.createElement('div')
+    pageContent.className = 'pageContent'
+    app.appendChild(pageContent)
+
+    const header =  document.createElement('header')
+    pageContent.appendChild(header)
+    const h1 = document.createElement('h1')
+    h1.innerText = 'Zdjęcia'
+    header.appendChild(h1)
+
+    const main = document.createElement('main')
+    main.id = 'photosMain'
+    pageContent.appendChild(main)
+
+    const photos = document.createElement('div')
+    photos.className = 'photos-container'
+    main.appendChild(photos) 
+}
+
 const loadPhotosGerUrlToSlider = () => {
     const url = new URL(window.location.href)
     const albumId = url.searchParams.get('albumId')
@@ -68,7 +89,12 @@ const loadPhotosToSlider = async (albumId, photoId) => {
     })
 }
 
-loadPhotosGerUrlToSlider()
+const photos = () => {
+    createPhotosContainer()
+    loadPhotosGerUrlToSlider()
+}
+
+photos()
 
 
 

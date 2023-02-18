@@ -7,6 +7,7 @@ const pages = {
             return import('./../pages/error404.html')
         },
         scripts() {
+            import('./navbar.js')
             return import('./error404.js')
         }
     },
@@ -15,6 +16,7 @@ const pages = {
             return import('./../pages/home.html')
         },
         scripts() {
+            import('./navbar.js')
             return import('./home.js')
         }
     },
@@ -23,6 +25,7 @@ const pages = {
             return import('./../pages/form.html')
         },
         scripts() {
+            import('./navbar.js')
             return import('./validateForm.js')
         }
     },
@@ -31,6 +34,7 @@ const pages = {
             return import('../pages/posts.html')
         },
         scripts() {
+            import('./navbar.js')
             return import('./posts.js')
         }  
     },
@@ -39,6 +43,7 @@ const pages = {
             return import('../pages/albums.html')
         },
         scripts() {
+            import('./navbar.js')
             return import('./albums.js')
         }
     },
@@ -47,6 +52,7 @@ const pages = {
             return import('../pages/photos.html')
         },
         scripts() {
+            import('./navbar.js')
             return import('./photos.js')
         }
     }
