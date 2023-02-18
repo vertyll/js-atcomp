@@ -1,4 +1,4 @@
-import { customAlert } from './alert.js'
+import { customAlert } from './customAlert'
 import { addInfo } from './validate.js'
 
 function dobFromPesel(pesel) {

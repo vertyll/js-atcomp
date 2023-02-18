@@ -29,8 +29,8 @@ export default function customAlert(message) {
         margin-top: 0.8rem;
         `
     )
-    alert.innerHTML = `<span>${message}</span>`;
-    alert.appendChild(alertButton);
+    alert.innerHTML = `<span>${message}</span>`
+    alert.appendChild(alertButton)
     alertButton.addEventListener('click', () => {
         alert.remove()
     })

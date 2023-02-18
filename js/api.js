@@ -5,7 +5,7 @@ const getPostsData = async () => {
     return res.data
 }
 
-const getCoomentsData = async (postId) => {
+const getCommentsData = async (postId) => {
     const res = await axios.get(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`)
     return res.data
 }
@@ -20,4 +20,4 @@ const getPhotosAlbums = async (albumId) => {
     return res.data
 }
 
-export { getPostsData, getCoomentsData, getAlbums, getPhotosAlbums }
+export { getPostsData, getCommentsData, getAlbums, getPhotosAlbums }

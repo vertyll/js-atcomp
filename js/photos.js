@@ -9,7 +9,7 @@ const loadPhotosGerUrlToSlider = () => {
 
 const buildSliderWithButtons = (photos) => {
 
-    const slider = document.querySelector('.slider')
+    const slider = document.querySelector('.photos-container')
 
     const sliderButtons = document.createElement('div')
     sliderButtons.classList.add('sliderButtons')

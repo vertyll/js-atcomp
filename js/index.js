@@ -1,12 +1,21 @@
+const app = document.getElementById('app')
+
 const path = window.location.pathname
-const routes = {
-    '404' : import('./../pages/404.html'),
+const pages = {
+    '404' : {
+        html() {
+            return import('./../pages/error404.html')
+        },
+        scripts() {
+            return import('./error404.js')
+        }
+    },
     '/' : {
         html() {
             return import('./../pages/home.html')
         },
         scripts() {
-            return
+            return import('./home.js')
         }
     },
     '/form' : {
@@ -44,25 +53,19 @@ const routes = {
 }
 
 const loadPage = async () => {
-    routes[path].html().then( (html) => {
-        document.getElementById('template').innerHTML = html
-        routes[path].scripts()
-    })
-    
-}
-
-const load404 = async () => {
-    routes[404].then( (html) => {
-        document.getElementById('template').innerHTML = html
-    })
-}
-
-const router = () => {
-    if (routes[path]) {
-        loadPage()
+    if(pages[path]){
+        app.innerHTML = await pages[path].html()
+        if(pages[path].scripts){
+            await pages[path].scripts()
+        }
     } else {
-        load404()
+        app.innerHTML = await pages['404'].html()
+        await pages['404'].scripts()
     }
 }
 
-router()
+const init = async () => {
+    await loadPage()
+}
+
+init()

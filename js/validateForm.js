@@ -1,5 +1,15 @@
-import { formValues, regex, pesel, checkName, checkSurname, checkEmail, checkDescription, checkPesel } from './validate.js'
+import { 
+    formValues, 
+    regex, 
+    pesel, 
+    checkName, 
+    checkSurname, 
+    checkEmail, 
+    checkDescription, 
+    checkPesel 
+} from './validate.js'
 import { validatePesel } from './pesel.js'
+import { customAlert } from './customAlert.js'
 
 function validateForm() {
 

@@ -21,7 +21,7 @@ function addInfo() {
     const oldItem = document.querySelector('p')
     const newItem = document.createElement('p')
     newItem.innerHTML = `
-    <h2>Wynik</h2><br>
+    <h2>Wynik</h2>
     <p>Imie: ${formValues.name.value}</p>
     <p>Nazwisko: ${formValues.surname.value}</p>
     <p>Email: ${formValues.email.value}</p>

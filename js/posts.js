@@ -1,85 +1,7 @@
-import { getPostsData, getCoomentsData } from './api.js'
+import { getPostsData, getCommentsData } from './api.js'
+import { buildFilter, selectFilter, resetFilterForm, saveFilterSettings } from './filter.js'
 
-const postEngine = async (postId) => {
-
-    const posts = await getPostsData()
-    const postsContainer = document.getElementById('posts')
-
-    posts.forEach( (post) => {
-        const postContainer = document.createElement('div')
-        postContainer.classList.add('post')
-
-        const postTitle = document.createElement('h3')
-        postTitle.innerHTML = `Tytuł: ${post.title}`
-
-        const postBody = document.createElement('p')
-        postBody.innerHTML = post.body
-
-        const postAuthor = document.createElement('p')
-        postAuthor.innerHTML = `Autor: ${post.userId}`
-
-        const buttonShowHide = document.createElement('button')
-        buttonShowHide.innerHTML = 'Komentarze'
-        buttonShowHide.classList.add('btn-show-hide')
-
-        const postComments = document.createElement('div')
-        postComments.id = `comments-${post.id}`
-        postComments.classList.add('comments')
-
-        postsContainer.appendChild(postContainer)
-        postContainer.appendChild(postTitle)
-        postContainer.appendChild(postBody)
-        postContainer.appendChild(postAuthor)
-        postContainer.appendChild(buttonShowHide)
-        postContainer.appendChild(postComments)
-
-        buttonShowHide.addEventListener('click', async () => {
-            const comments = await getCoomentsData(post.id)
-            const commentsContainer = document.getElementById(`comments-${post.id}`)
-            commentsContainer.innerHTML = ''
-
-            comments.forEach( (comment) => {
-                const commentContainer = document.createElement('div')
-                commentContainer.classList.add('comment')
-
-                const commentName = document.createElement('h3')
-                commentName.innerHTML = comment.name
-
-                const commentEmail = document.createElement('p')
-                commentEmail.innerHTML = comment.email
-
-                const commentBody = document.createElement('p')
-                commentBody.innerHTML = comment.body
-
-                commentsContainer.appendChild(commentContainer)
-                commentContainer.appendChild(commentName)
-                commentContainer.appendChild(commentEmail)
-                commentContainer.appendChild(commentBody)
-            })
-            if (commentsContainer.style.display === 'block') {
-                commentsContainer.style.display = 'none'
-            }
-            else {
-                commentsContainer.style.display = 'block'
-            }
-        }) 
-    })
-}
-
-const saveFilterSettings = () => {
-    let path = window.location.pathname.substring(1)
-    for(inputName in inputsFromPosts){
-        if(inputsFromPosts[inputName].type != 'button'){
-            localStorage.setItem(`${path}::${inputName}`, form[inputName].value);
-        }
-    }
-}
-
-window.addEventListener('beforeunload', () => {
-    saveFilterSettings();
-})
-
-let inputs = {
+const inputs = {
     author: {
         label: 'Autor:', 
         defaultValue: '', 
@@ -94,39 +16,136 @@ let inputs = {
         type: 'input', 
         inputType: 'text'
     },
-    content: {
+    body: {
         label: 'Treść:', 
         defaultValue: '', 
         filterKey: 'body', 
         type: 'input', 
         inputType: 'text'
     },
-    sortBy: {
-        label: 'Sortowanie po:', 
-        defaultValue: 'userId', 
-        type: 'select', 
-        selectOptions: ['userId', 'title', 'body'], 
-        textForOptions: ['Autor', 'Tytuł', 'Treść']
-    },
     filter: {
         type: 'button', 
         id: 'filter', 
-        content: 'Filtruj', 
-        btnFunction: async () =>{
-        let filteredPosts = await filter('posts');
-        postBuilder(filteredPosts);
-        saveFilterSettings();
+        body: 'Filtruj', 
+        btnFunction: async () => {
+            const filteredPosts = await selectFilter('posts')
+            postsEngine(filteredPosts)
+            saveFilterSettings()
         }
     },
-    clean: {
+    reset: {
         type: 'button', 
-        id: 'clean', 
-        content: 'Wyczyść', 
-        btnFunction: async () =>{
-        clean();
-        await postsData();
+        id: 'reset', 
+        body: 'Resetuj', 
+        btnFunction: async () => {
+            resetFilterForm()
+            await postsData()
         }
-    },
+    }
 }
 
-postEngine()
+const createPostsContainer = () => {
+    const app = document.getElementById('app')
+    const pagebody = document.createElement('div')
+    pagebody.className = 'pagebody'
+    app.appendChild(pagebody)
+    const header =  document.createElement('header')
+    pagebody.appendChild(header)
+    const h1 = document.createElement('h1')
+    h1.innerText = 'Posty'
+    header.appendChild(h1)
+    const main = document.createElement('main')
+    main.id = 'postsMain'
+    pagebody.appendChild(main)
+    const filterForm = document.createElement('div')
+    filterForm.id = 'filterContainer'
+    main.appendChild(filterForm)
+    const posts = document.createElement('div')
+    posts.id = 'postsContainer'
+    main.appendChild(posts)
+    postsContainer = document.getElementById('postsContainer')
+    buildFilter(inputs)
+    postsData()
+}
+
+const buildPosts = (postData) => {
+    const postId = postData.id
+    const postAuthor = postData.userId
+    const postTitle = postData.title
+    const postBody = postData.body
+    
+    const posts = document.createElement('div')
+    const post = postsContainer.appendChild(posts)
+    post.className = 'post'
+    post.id = `post${postId}`
+    
+    const h2 = document.createElement('h2')
+    const title = post.appendChild(h2)
+    title.innerHTML =`Tytuł: ${postTitle}`
+
+    const postB = document.createElement('p')
+    const body = post.appendChild(postB)
+    body.innerText = postBody
+    
+    const postA = document.createElement('p')
+    const author = post.appendChild(postA)
+    author.innerText = postAuthor
+
+    const commentButton = document.createElement('button')
+    commentButton.innerText = 'Komentarze'
+    commentButton.value = 'notClicked'
+    posts.appendChild(commentButton)
+
+    commentButton.addEventListener('click', async (e) => {
+        if(e.target.value === 'notClicked') {
+            commentsData = await getCommentsData(postId)
+            buildComments(post.id, commentsData)
+            e.target.value = 'clicked'
+        }
+        else{
+            e.target.value = 'notClicked'
+            document.getElementById(`comments${post.id}`).remove()
+        }
+    })
+}
+
+const buildComments = (postId, commentsData) => {
+    const posts = document.getElementById(postId)
+    const commentsContainer = document.createElement('div')
+    commentsContainer.className = 'commentsContainer'
+    commentsContainer.id = `comments${postId}`
+    commentsContainer.innerHTML = "<h3>Komentarze:</h3>"
+    posts.appendChild(commentsContainer)
+    for(comment in commentsData){
+        const comments = document.createElement('div')
+        comments.className = 'comments'
+        commentsContainer.appendChild(comments)
+
+        const commentEmail = document.createElement('h4')
+        commentEmail.innerHTML = commentsData[comment].email
+        comments.appendChild(commentEmail)
+
+        const commentName = document.createElement('h5')
+        commentName.innerHTML = commentsData[comment].name
+        comments.appendChild(commentName)
+
+        const commentBody = document.createElement('p')
+        commentBody.innerText = commentsData[comment].body
+        comments.appendChild(commentBody)
+    }
+}
+
+const postsEngine = (data) => {
+    for(const d in data){
+        buildPosts(data[d])
+    }
+}
+
+const postsData = async () => {
+    postsContainer.innerHTML=''
+    posts = await getPostsData()
+    const filteredPosts = await selectFilter('posts')
+    postsEngine(filteredPosts)
+}
+
+createPostsContainer()
