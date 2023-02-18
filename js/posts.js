@@ -46,17 +46,17 @@ const inputs = {
 
 const createPostsContainer = () => {
     const app = document.getElementById('app')
-    const pagebody = document.createElement('div')
-    pagebody.className = 'pagebody'
-    app.appendChild(pagebody)
+    const pageContent = document.createElement('div')
+    pageContent.className = 'pageContent'
+    app.appendChild(pageContent)
     const header =  document.createElement('header')
-    pagebody.appendChild(header)
+    pageContent.appendChild(header)
     const h1 = document.createElement('h1')
     h1.innerText = 'Posty'
     header.appendChild(h1)
     const main = document.createElement('main')
     main.id = 'postsMain'
-    pagebody.appendChild(main)
+    pageContent.appendChild(main)
     const filterForm = document.createElement('div')
     filterForm.id = 'filterContainer'
     main.appendChild(filterForm)

@@ -26,6 +26,7 @@ const pages = {
         },
         scripts() {
             import('./navbar.js')
+            import('./form.js')
             return import('./validateForm.js')
         }
     },
