@@ -1,19 +1,22 @@
-const inputs = document.getElementById('form').elements, pesel = document.getElementById('pesel'), formValues = {
-    name: inputs.namedItem('name'),
-    surname: inputs.namedItem('surname'),
-    email: inputs.namedItem('email'),
-    age: inputs.namedItem('age'),
-    description: inputs.namedItem('description'),
-    gender: inputs.namedItem('gender'),
-    pesel: inputs.namedItem('pesel'),
-    dob: inputs.namedItem('dob'),
-}, regex = {
-    name: /^[a-zA-Z]+$/,
-    surname: /^[a-zA-Z]+$/,
-    email: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
-    age: /^(1[89]|[2-9]\d)$/gm,
-    pesel: /^[0-9]{11}$/
-};
+const inputs = document.getElementById('form').elements,
+    pesel = document.getElementById('pesel'),
+    formValues = {
+        name: inputs.namedItem('name'),
+        surname: inputs.namedItem('surname'),
+        email: inputs.namedItem('email'),
+        age: inputs.namedItem('age'),
+        description: inputs.namedItem('description'),
+        gender: inputs.namedItem('gender'),
+        pesel: inputs.namedItem('pesel'),
+        dob: inputs.namedItem('dob'),
+    },
+    regex = {
+        name: /^[a-zA-Z]+$/,
+        surname: /^[a-zA-Z]+$/,
+        email: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+        age: /^(1[89]|[2-9]\d)$/gm,
+        pesel: /^[0-9]{11}$/
+    };
 
 function addInfo() {
 
@@ -59,4 +62,14 @@ function checkPesel() {
     else formValues.pesel.style.border = '0.1rem solid red'
 }
 
-export { formValues, regex, pesel, addInfo, checkName, checkSurname, checkEmail, checkDescription, checkPesel }
+export {
+    formValues,
+    regex,
+    pesel,
+    addInfo,
+    checkName,
+    checkSurname,
+    checkEmail,
+    checkDescription,
+    checkPesel
+}

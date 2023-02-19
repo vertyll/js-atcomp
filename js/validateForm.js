@@ -1,15 +1,19 @@
-import { 
-    formValues, 
-    regex, 
-    pesel, 
-    checkName, 
-    checkSurname, 
-    checkEmail, 
-    checkDescription, 
-    checkPesel 
+import {
+    formValues,
+    regex,
+    pesel,
+    checkName,
+    checkSurname,
+    checkEmail,
+    checkDescription,
+    checkPesel
 } from './validate.js'
-import { validatePesel } from './pesel.js'
-import { customAlert } from './customAlert.js'
+import {
+    validatePesel
+} from './pesel.js'
+import {
+    customAlert
+} from './customAlert.js'
 
 function validateForm() {
 
@@ -38,28 +42,28 @@ function validateInit() {
     let description = document.getElementById('description')
     let pesel = document.getElementById('pesel')
 
-    form.addEventListener('submit', function (e) {
+    form.addEventListener('submit', function(e) {
         e.preventDefault()
         validateForm()
     })
 
-    name.addEventListener('keyup', function () {
+    name.addEventListener('keyup', function() {
         checkName()
     })
 
-    surname.addEventListener('keyup', function () {
+    surname.addEventListener('keyup', function() {
         checkSurname()
     })
 
-    email.addEventListener('keyup', function () {
+    email.addEventListener('keyup', function() {
         checkEmail()
     })
 
-    description.addEventListener('keyup', function () {
+    description.addEventListener('keyup', function() {
         checkDescription()
     })
 
-    pesel.addEventListener('keyup', function () {
+    pesel.addEventListener('keyup', function() {
         checkPesel()
     })
 }

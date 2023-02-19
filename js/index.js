@@ -2,77 +2,74 @@ const app = document.getElementById('app')
 
 const path = window.location.pathname
 const pages = {
-    '404' : {
+    '404': {
         html() {
-            return import('./../pages/error404.html')
+            import ('./../pages/error404.html')
         },
         scripts() {
-            import('./navbar.js')
-            return import('./error404.js')
+            import ('./navbar.js')
+            import ('./error404.js')
         }
     },
-    '/' : {
+    '/': {
         html() {
-            return import('./../pages/home.html')
+            import ('./../pages/home.html')
         },
         scripts() {
-            import('./navbar.js')
-            return import('./home.js')
+            import ('./navbar.js')
+            import ('./home.js')
         }
     },
-    '/form' : {
+    '/form': {
         html() {
-            return import('./../pages/form.html')
+            import ('./../pages/form.html')
         },
         scripts() {
-            import('./navbar.js')
-            import('./form.js')
-            return import('./validateForm.js')
+            import ('./navbar.js')
+            import ('./form.js')
+            import ('./validateForm.js')
         }
     },
-    '/posts' : {
+    '/posts': {
         html() {
-            return import('../pages/posts.html')
+            import ('../pages/posts.html')
         },
         scripts() {
-            import('./navbar.js')
-            return import('./posts.js')
-        }  
-    },
-    '/albums' : {
-        html() {
-            return import('../pages/albums.html')
-        },
-        scripts() {
-            import('./navbar.js')
-            return import('./albums.js')
+            import ('./navbar.js')
+            import ('./posts.js')
         }
     },
-    '/photos' : {
+    '/albums': {
         html() {
-            return import('../pages/photos.html')
+            import ('../pages/albums.html')
         },
         scripts() {
-            import('./navbar.js')
-            return import('./photos.js')
+            import ('./navbar.js')
+            import ('./albums.js')
+        }
+    },
+    '/photos': {
+        html() {
+            import ('../pages/photos.html')
+        },
+        scripts() {
+            import ('./navbar.js')
+            import ('./photos.js')
         }
     }
 }
 
-const loadPage = async () => {
-    if(pages[path]){
-        app.innerHTML = await pages[path].html()
-        if(pages[path].scripts){
-            await pages[path].scripts()
-        }
-    } else {
-        app.innerHTML = await pages['404'].html()
-        await pages['404'].scripts()
+const loadPage = async (path) => {
+    const page = pages[path]
+    if (!page) {
+        return pages['404']
     }
+    await page.html()
+    await page.scripts()
 }
 
 const init = async () => {
-    await loadPage()
+    await loadPage(path)
 }
 
 init()

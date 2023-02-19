@@ -20,4 +20,9 @@ const getPhotosAlbums = async (albumId) => {
     return res.data
 }
 
-export { getPostsData, getCommentsData, getAlbums, getPhotosAlbums }
+export {
+    getPostsData,
+    getCommentsData,
+    getAlbums,
+    getPhotosAlbums
+}

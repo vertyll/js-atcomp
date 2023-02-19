@@ -1,5 +1,9 @@
-import { customAlert } from './customAlert'
-import { addInfo } from './validate.js'
+import {
+    customAlert
+} from './customAlert'
+import {
+    addInfo
+} from './validate.js'
 
 function dobFromPesel(pesel) {
 
@@ -7,23 +11,19 @@ function dobFromPesel(pesel) {
     let month = parseInt(pesel.substring(2, 4))
     let day = parseInt(pesel.substring(4, 6))
 
-    if(month > 80) {
+    if (month > 80) {
         year = year + 1800
         month = month - 80
-    }
-    else if(month > 60) {
+    } else if (month > 60) {
         year = year + 2200
         month = month - 60
-    }
-    else if (month > 40) {
+    } else if (month > 40) {
         year = year + 2100
         month = month - 40
-    }
-    else if (month > 20) {
+    } else if (month > 20) {
         year = year + 2000
         month = month - 20
-    }
-    else {
+    } else {
         year += 1900
     }
 
@@ -67,7 +67,7 @@ function validatePesel(pesel) {
     let weight = [9, 7, 3, 1, 9, 7, 3, 1, 9, 7]
     let sum = 0
 
-    for(let i = 0; i < weight.length; i++) {
+    for (let i = 0; i < weight.length; i++) {
         sum += (parseInt(pesel.substring(i, i + 1)) * weight[i])
     }
     sum = sum % 10
@@ -83,4 +83,6 @@ function validatePesel(pesel) {
     }
 }
 
-export { validatePesel }
+export {
+    validatePesel
+}

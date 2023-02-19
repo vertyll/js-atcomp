@@ -1,24 +1,26 @@
-import { getPhotosAlbums } from './api.js'
+import {
+    getPhotosAlbums
+} from './api.js'
 
 const createPhotosContainer = () => {
     const app = document.getElementById('app')
-    const pageContent = document.createElement('div')
-    pageContent.className = 'pageContent'
-    app.appendChild(pageContent)
+    const pageBody = document.createElement('div')
+    pageBody.classList.add('page-body')
+    app.appendChild(pageBody)
 
-    const header =  document.createElement('header')
-    pageContent.appendChild(header)
+    const header = document.createElement('header')
+    pageBody.appendChild(header)
     const h1 = document.createElement('h1')
     h1.innerText = 'Zdjęcia'
     header.appendChild(h1)
 
     const main = document.createElement('main')
-    main.id = 'photosMain'
-    pageContent.appendChild(main)
+    main.classList.add('photos-main')
+    pageBody.appendChild(main)
 
     const photos = document.createElement('div')
-    photos.className = 'photos-container'
-    main.appendChild(photos) 
+    photos.classList.add('photos-container')
+    main.appendChild(photos)
 }
 
 const loadPhotosGerUrlToSlider = () => {
@@ -33,21 +35,21 @@ const buildSliderWithButtons = (photos) => {
     const slider = document.querySelector('.photos-container')
 
     const sliderButtons = document.createElement('div')
-    sliderButtons.classList.add('sliderButtons')
+    sliderButtons.classList.add('slider-buttons')
     slider.appendChild(sliderButtons)
 
     const sliderButtonLeft = document.createElement('button')
-    sliderButtonLeft.classList.add('sliderButtonLeft')
+    sliderButtonLeft.classList.add('slider-button-left')
     sliderButtonLeft.innerHTML = '<'
     sliderButtons.appendChild(sliderButtonLeft)
 
     const sliderButtonRight = document.createElement('button')
-    sliderButtonRight.classList.add('sliderButtonRight')
+    sliderButtonRight.classList.add('slider-button-right')
     sliderButtonRight.innerHTML = '>'
     sliderButtons.appendChild(sliderButtonRight)
 
     const sliderContainer = document.createElement('div')
-    sliderContainer.classList.add('sliderContainer')
+    sliderContainer.classList.add('slider-container')
     slider.appendChild(sliderContainer)
 
     return sliderContainer
@@ -57,8 +59,8 @@ const loadPhotosToSlider = async (albumId, photoId) => {
     const photos = await getPhotosAlbums(albumId)
     const sliderContainer = buildSliderWithButtons(photos)
 
-    const sliderButtonLeft = document.querySelector('.sliderButtonLeft')
-    const sliderButtonRight = document.querySelector('.sliderButtonRight')
+    const sliderButtonLeft = document.querySelector('.slider-button-left')
+    const sliderButtonRight = document.querySelector('.slider-button-right')
 
     let index = 0
     if (photoId) {
@@ -78,7 +80,7 @@ const loadPhotosToSlider = async (albumId, photoId) => {
             index = photos.length - 1
         }
         showPhoto(index)
-     })
+    })
 
     sliderButtonRight.addEventListener('click', () => {
         index++
@@ -95,6 +97,3 @@ const photos = () => {
 }
 
 photos()
-
-
-

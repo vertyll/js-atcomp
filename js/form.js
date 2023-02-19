@@ -1,21 +1,21 @@
 const createFormContainer = () => {
     const app = document.getElementById('app')
-    const pageContent = document.createElement('div')
-    pageContent.className = 'pageContent'
-    app.appendChild(pageContent)
+    const pageBody = document.createElement('div')
+    pageBody.classList.add('page-body')
+    app.appendChild(pageBody)
 
-    const header =  document.createElement('header')
-    pageContent.appendChild(header)
+    const header = document.createElement('header')
+    pageBody.appendChild(header)
     const h1 = document.createElement('h1')
     h1.innerText = 'Formularz'
     header.appendChild(h1)
 
     const main = document.createElement('main')
     main.id = 'formMain'
-    pageContent.appendChild(main)
+    pageBody.appendChild(main)
 
     const formContainer = document.createElement('div')
-    formContainer.className = 'form-container'
+    formContainer.classList.add('form-container')
     main.appendChild(formContainer)
 
     const form = document.createElement('form')
@@ -23,43 +23,43 @@ const createFormContainer = () => {
     formContainer.appendChild(form)
 
     inputWrapForm1 = document.createElement('div')
-    inputWrapForm1.className = 'input-wrap-form'
+    inputWrapForm1.classList.add('input-wrap-form')
     form.appendChild(inputWrapForm1)
 
     inputWrapForm2 = document.createElement('div')
-    inputWrapForm2.className = 'input-wrap-form'
+    inputWrapForm2.classList.add('input-wrap-form')
     form.appendChild(inputWrapForm2)
 
     inputWrapForm3 = document.createElement('div')
-    inputWrapForm3.className = 'input-wrap-form'
+    inputWrapForm3.classList.add('input-wrap-form')
     form.appendChild(inputWrapForm3)
 
     inputWrapForm4 = document.createElement('div')
-    inputWrapForm4.className = 'input-wrap-form'
+    inputWrapForm4.classList.add('input-wrap-form')
     form.appendChild(inputWrapForm4)
 
     inputWrapForm5 = document.createElement('div')
-    inputWrapForm5.className = 'input-wrap-form'
+    inputWrapForm5.classList.add('input-wrap-form')
     form.appendChild(inputWrapForm5)
-    
+
     inputWrapForm6 = document.createElement('div')
-    inputWrapForm6.className = 'input-wrap-form'
+    inputWrapForm6.classList.add('input-wrap-form')
     form.appendChild(inputWrapForm6)
 
     inputWrapForm7 = document.createElement('div')
-    inputWrapForm7.className = 'input-wrap-form'
+    inputWrapForm7.classList.add('input-wrap-form')
     form.appendChild(inputWrapForm7)
 
     inputWrapForm8 = document.createElement('div')
-    inputWrapForm8.className = 'input-wrap-form'
+    inputWrapForm8.classList.add('input-wrap-form')
     form.appendChild(inputWrapForm8)
 
     inputWrapForm9 = document.createElement('div')
-    inputWrapForm9.className = 'input-wrap-form'
+    inputWrapForm9.classList.add('input-wrap-form')
     form.appendChild(inputWrapForm9)
 
     const formBottom = document.createElement('div')
-    formBottom.className = 'form-bottom'
+    formBottom.classList.add('form-bottom')
     formContainer.appendChild(formBottom)
 
     const p = document.createElement('p')
@@ -104,7 +104,7 @@ const createFormContainer = () => {
     inputWrapForm4.appendChild(labelDescription)
 
     const textAreaDescription = document.createElement('textarea')
-    textAreaDescription.className = 'description'
+    textAreaDescription.classList.add('description')
     textAreaDescription.name = 'description'
     textAreaDescription.id = 'description'
     inputWrapForm4.appendChild(textAreaDescription)
@@ -167,7 +167,7 @@ const createFormContainer = () => {
 
     const button = document.createElement('button')
     button.id = 'button'
-    button.className = 'button'
+    button.classList.add('button')
     button.innerHTML = 'Zapisz'
     inputWrapForm9.appendChild(button)
 
