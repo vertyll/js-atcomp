@@ -1,23 +1,41 @@
 import axios from 'axios'
 
+const baseUrl = 'https://jsonplaceholder.typicode.com'
+
 const getPostsData = async () => {
-    const res = await axios.get('https://jsonplaceholder.typicode.com/posts/')
-    return res.data
+    try {
+        const res = await axios.get(`${baseUrl}/posts/`)
+        return res.data
+    } catch (error) {
+        return []
+    }
 }
 
 const getCommentsData = async (postId) => {
-    const res = await axios.get(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`)
-    return res.data
+    try {
+        const res = await axios.get(`${baseUrl}/posts/${postId}/comments`)
+        return res.data
+    } catch (error) {
+        return []
+    }
 }
 
 const getAlbums = async () => {
-    const res = await axios.get('https://jsonplaceholder.typicode.com/albums/')
-    return res.data
+    try {
+        const res = await axios.get(`${baseUrl}/albums/`)
+        return res.data
+    } catch (error) {
+        return []       
+    }
 }
 
 const getPhotosAlbums = async (albumId) => {
-    const res = await axios.get(`https://jsonplaceholder.typicode.com/albums/${albumId}/photos`)
-    return res.data
+    try {
+        const res = await axios.get(`${baseUrl}/albums/${albumId}/photos`)
+        return res.data
+    } catch (error) {
+        return []
+    }
 }
 
 export {
