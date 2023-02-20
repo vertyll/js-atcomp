@@ -64,7 +64,7 @@ const createPostsContainer = () => {
     h1.innerText = 'Posty'
     header.appendChild(h1)
     const main = document.createElement('main')
-    main.classList.add('post-main')
+    main.classList.add('posts-main')
     pageBody.appendChild(main)
     const filterForm = document.createElement('div')
     filterForm.classList.add('filter-container')
