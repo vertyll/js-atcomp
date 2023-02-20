@@ -30,7 +30,7 @@ const inputs = {
         btnFunction: async () => {
             const filter = await getAlbums()
             const filteredPosts = await selectFilter(filter)
-            postsEngine(filteredPosts)
+            albumsEngine(filteredPosts)
             saveFilterSettings()
         }
     },
@@ -99,13 +99,15 @@ const buildAlbums = (albumData) => {
 }
 
 const albumsEngine = (data) => {
-    for (const albums of data) {
-        buildAlbums(albums)
-    }
 
-    if (data.length === 0) {
-        const noAlbums = document.createElement('p')
-        noAlbums.innerText = 'Brak albumów'
+    if (data.length) {
+        for (const albums of data) {
+            buildAlbums(albums)
+        }
+    } else {
+        const noAlbums = document.createElement('div')
+        noAlbums.classList.add('no-albums')
+        noAlbums.innerHTML = '<h2>Brak albumów spełniających kryteria wyszukiwania</h2>'
         albumsContainer.appendChild(noAlbums)
     }
 }

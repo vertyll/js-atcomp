@@ -144,13 +144,15 @@ const buildComments = (postId, commentsData) => {
 }
 
 const postsEngine = (data) => {
-    for (const posts of data) {
-        buildPosts(posts)
-    }
-
-    if (data.length === 0) {
-        const noPosts = document.createElement('p')
-        noPosts.innerText = 'Brak postów'
+    
+    if (data.length) {
+        for (const post of data) {
+            buildPosts(post)
+        }
+    } else {
+        const noPosts = document.createElement('div')
+        noPosts.classList.add('no-posts')
+        noPosts.innerHTML = '<h2>Brak postów spełniających kryteria wyszukiwania</h2>'
         postsContainer.appendChild(noPosts)
     }
 }
