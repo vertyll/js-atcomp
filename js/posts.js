@@ -144,8 +144,8 @@ const buildComments = (postId, commentsData) => {
 }
 
 const postsEngine = (data) => {
-    for (const n in data) {
-        buildPosts(data[n])
+    for (const posts of data) {
+        buildPosts(posts)
     }
 
     if (data.length === 0) {

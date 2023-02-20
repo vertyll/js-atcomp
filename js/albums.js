@@ -99,8 +99,8 @@ const buildAlbums = (albumData) => {
 }
 
 const albumsEngine = (data) => {
-    for (const n in data) {
-        buildAlbums(data[n])
+    for (const albums of data) {
+        buildAlbums(albums)
     }
 
     if (data.length === 0) {

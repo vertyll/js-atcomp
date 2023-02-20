@@ -1,8 +1,3 @@
-import {
-    getPostsData,
-    getAlbums
-} from './api.js'
-
 const saveFilterSettings = () => {
     let path = window.location.pathname.substring(1)
     for (inputName in filterInputs) {
@@ -78,20 +73,20 @@ const selectFilter = (filter) => {
 
     let filterData = filter
 
-    let filterKeys = []
+    let filterKeys = {}
 
     for (let inputName in filterInputs) {
         filterKeys[inputName] = form[inputName].value
         if (form[inputName].type == 'text') {
-            if (!!filterKeys[inputName]) {
-                filterData = filterData.filter((e) => {
-                    return e[filterInputs[inputName].filterKey].includes(filterKeys[inputName])
+            if (filterKeys[inputName]) {
+                filterData = filterData.filter((rows) => {
+                    return rows[filterInputs[inputName].filterKey].includes(filterKeys[inputName])
                 })
             }
         } else if (form[inputName].type == 'number') {
-            if (!!filterKeys[inputName]) {
-                filterData = filterData = filterData.filter((e) => {
-                    return e[filterInputs[inputName].filterKey] == form[inputName].value
+            if (filterKeys[inputName]) {
+                filterData = filterData = filterData.filter((rows) => {
+                    return rows[filterInputs[inputName].filterKey] == form[inputName].value
                 })
             }
         }
