@@ -30,7 +30,7 @@ const inputs = {
         btnFunction: async () => {
             const filter = await getAlbums()
             const filteredPosts = await selectFilter(filter)
-            albumsEngine(filteredPosts)
+            albumsData(filteredPosts)
             saveFilterSettings()
         }
     },
