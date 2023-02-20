@@ -84,7 +84,7 @@ const buildAlbums = (albumData) => {
     album.classList.add('album')
     album.id = `album${albumNumber}`
 
-    const h2 = document.createElement('h2')
+    const h2 = document.createElement('h3')
     const title = album.appendChild(h2)
     title.innerHTML = `Tytuł: ${albumTitle}`
 

@@ -88,17 +88,17 @@ const buildPosts = (postData) => {
     post.classList.add('post')
     post.id = `post${postId}`
 
-    const h2 = document.createElement('h2')
+    const h2 = document.createElement('h3')
     const title = post.appendChild(h2)
     title.innerHTML = `Tytuł: ${postTitle}`
 
     const postB = document.createElement('p')
     const body = post.appendChild(postB)
-    body.innerText = postBody
+    body.innerHTML = `Treść: ${postBody}`
 
     const postA = document.createElement('p')
     const author = post.appendChild(postA)
-    author.innerText = postAuthor
+    author.innerHTML = `Autor: ${postAuthor}`
 
     const commentButton = document.createElement('button')
     commentButton.innerText = 'Komentarze'
