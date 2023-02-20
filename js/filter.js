@@ -74,17 +74,9 @@ const buildFilter = (inputs) => {
     return filterForm
 }
 
-const selectFilter = async (switchFilter) => {
+const selectFilter = (filter) => {    
 
-    let filterData
-
-    if (switchFilter == 'posts') {
-        postsContainer.innerHTML = ''
-        filterData = await getPostsData()
-    } else if (switchFilter == 'albums') {
-        albumsContainer.innerHTML = ''
-        filterData = await getAlbums()
-    }
+    let filterData = filter
 
     let filterKeys = []
 
@@ -93,19 +85,18 @@ const selectFilter = async (switchFilter) => {
         if (form[inputName].type == 'text') {
             if (!!filterKeys[inputName]) {
                 filterData = filterData.filter((e) => {
-                    return e[filterInputs[inputName].filterKey].indexOf(form[inputName].value) !== -1
+                    return e[filterInputs[inputName].filterKey].includes(filterKeys[inputName])
                 })
             }
         } else if (form[inputName].type == 'number') {
             if (!!filterKeys[inputName]) {
-                filterData = filterData.filter((e) => {
+                filterData = filterData = filterData.filter((e) => {
                     return e[filterInputs[inputName].filterKey] == form[inputName].value
                 })
             }
         }
     }
     return filterData
-        
 }
 
 export {

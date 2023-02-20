@@ -28,8 +28,9 @@ const inputs = {
         id: 'filter',
         body: 'Filtruj',
         btnFunction: async () => {
-            const filteredAlbums = await selectFilter('albums')
-            albumsEngine(filteredAlbums)
+            const filter = await getAlbums()
+            const filteredPosts = await selectFilter(filter)
+            postsEngine(filteredPosts)
             saveFilterSettings()
         }
     },
@@ -112,7 +113,8 @@ const albumsEngine = (data) => {
 const albumsData = async () => {
     albumsContainer.innerHTML = ''
     albums = await getAlbums()
-    const filteredAlbums = await selectFilter('albums')
+    const filter = await getAlbums()
+    const filteredAlbums = await selectFilter(filter)
     albumsEngine(filteredAlbums)
 }
 

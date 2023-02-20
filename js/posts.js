@@ -36,7 +36,8 @@ const inputs = {
         id: 'filter',
         body: 'Filtruj',
         btnFunction: async () => {
-            const filteredPosts = await selectFilter('posts')
+            const filter = await getPostsData()
+            const filteredPosts = await selectFilter(filter)
             postsEngine(filteredPosts)
             saveFilterSettings()
         }
@@ -157,7 +158,8 @@ const postsEngine = (data) => {
 const postsData = async () => {
     postsContainer.innerHTML = ''
     posts = await getPostsData()
-    const filteredPosts = await selectFilter('posts')
+    const filter = await getPostsData()
+    const filteredPosts = await selectFilter(filter)
     postsEngine(filteredPosts)
 }
 
