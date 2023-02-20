@@ -1,5 +1,4 @@
 import {
-    formValues,
     regex,
     pesel,
     checkName,
@@ -14,6 +13,38 @@ import {
 import {
     customAlert
 } from './customAlert.js'
+
+const inputs = document.getElementById('form').elements,
+    pesel = document.getElementById('pesel'),
+    formValues = {
+        name: inputs.namedItem('name'),
+        surname: inputs.namedItem('surname'),
+        email: inputs.namedItem('email'),
+        age: inputs.namedItem('age'),
+        description: inputs.namedItem('description'),
+        gender: inputs.namedItem('gender'),
+        pesel: inputs.namedItem('pesel'),
+        dob: inputs.namedItem('dob'),
+}
+
+function addInfo() {
+
+    const div = document.querySelector('.form-bottom')
+    const oldItem = document.querySelector('p')
+    const newItem = document.createElement('p')
+    newItem.innerHTML = `
+    <h2>Wynik</h2>
+    <p>Imie: ${formValues.name.value}</p>
+    <p>Nazwisko: ${formValues.surname.value}</p>
+    <p>Email: ${formValues.email.value}</p>
+    <p>Opis: ${formValues.description.value}</p>
+    <p>PESEL: ${formValues.pesel.value}</p>
+    <p>Data urodzenia: ${formValues.dob.value}</p>
+    <p>Wiek: ${formValues.age.value}</p>
+    <p>Płeć: ${formValues.gender.value}</p>
+    `;
+    div.replaceChild(newItem, oldItem)
+}
 
 function validateForm() {
 
@@ -69,3 +100,8 @@ function validateInit() {
 }
 
 validateInit()
+
+export {
+    addInfo,
+    formValues
+}

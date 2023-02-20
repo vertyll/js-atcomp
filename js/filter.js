@@ -77,16 +77,18 @@ const selectFilter = (filter) => {
 
     for (let inputName in filterInputs) {
         filterKeys[inputName] = form[inputName].value
-        if (form[inputName].type == 'text') {
+        const filterKey = filterInputs[inputName].filterKey
+        const formType = form[inputName].type
+        if (formType == 'text') {
             if (filterKeys[inputName]) {
                 filterData = filterData.filter((rows) => {
-                    return rows[filterInputs[inputName].filterKey].includes(filterKeys[inputName])
+                    return rows[filterKey].includes(filterKeys[inputName])
                 })
             }
-        } else if (form[inputName].type == 'number') {
+        } else if (formType == 'number') {
             if (filterKeys[inputName]) {
                 filterData = filterData = filterData.filter((rows) => {
-                    return rows[filterInputs[inputName].filterKey] == form[inputName].value
+                    return rows[filterKey] == filterKeys[inputName]
                 })
             }
         }

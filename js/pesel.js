@@ -3,7 +3,7 @@ import {
 } from './customAlert'
 import {
     addInfo
-} from './validate.js'
+} from './validateForm.js'
 
 function dobFromPesel(pesel) {
 
