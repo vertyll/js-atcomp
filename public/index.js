@@ -7,8 +7,9 @@ const pages = {
             import ('./../pages/error404.html')
         },
         scripts() {
-            import ('./../js/navbar.js')
-            import ('./../js/error404.js')
+            import ('./../js/navbar.js').then(() => {
+                import ('./../js/error404.js')
+            })
         }
     },
     '/': {
@@ -16,8 +17,9 @@ const pages = {
             import ('./../pages/home.html')
         },
         scripts() {
-            import ('./../js/navbar.js')
-            import ('./../js/home.js')
+            import ('./../js/navbar.js').then(() => {
+                import ('./../js/home.js')
+            })
         }
     },
     '/form': {
@@ -25,9 +27,11 @@ const pages = {
             import ('./../pages/form.html')
         },
         scripts() {
-            import ('./../js/navbar.js')
-            import ('./../js/form.js')
-            import ('./../js/validateForm.js')
+            import ('./../js/navbar.js').then(() => {
+                import ('./../js/form.js').then(() => {
+                    import ('./../js/validateForm.js')
+                })
+            })
         }
     },
     '/posts': {
@@ -35,8 +39,9 @@ const pages = {
             import ('./../pages/posts.html')
         },
         scripts() {
-            import ('./../js/navbar.js')
-            import ('./../js/posts.js')
+            import ('./../js/navbar.js').then(() => {
+                import ('./../js/posts.js')
+            })
         }
     },
     '/albums': {
@@ -44,8 +49,9 @@ const pages = {
             import ('./../pages/albums.html')
         },
         scripts() {
-            import ('./../js/navbar.js')
-            import ('./../js/albums.js')
+            import ('./../js/navbar.js').then(() => {
+                import ('./../js/albums.js')
+            })
         }
     },
     '/photos': {
@@ -53,27 +59,17 @@ const pages = {
             import ('../pages/photos.html')
         },
         scripts() {
-            import ('./../js/navbar.js')
-            import ('./../js/photos.js')
+            import ('./../js/navbar.js').then(() => {
+                import ('./../js/photos.js')
+            })
         }
     }
 }
 
 const loadPage = async (path) => {
-    const page = pages[path]
-    const error404 = pages['404']
-    try {
-        if(page) {
-            await page.html()
-            await page.scripts()
-        }
-    } catch (error) {
-        return error404
-    }
+    const page = pages[path] || pages['404']
+    await page.html()
+    await page.scripts()
 }
 
-const init = async () => {
-    await loadPage(path)
-}
-
-init()
+loadPage(path)
