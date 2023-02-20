@@ -1,52 +1,31 @@
 const createNavbar = () => {
     const navbar = document.createElement('nav')
     navbar.classList.add('navbar')
-    navbar.id = 'navbar'
     app.appendChild(navbar)
 
     const navbarUl = document.createElement('ul')
     navbarUl.classList.add('navbar-ul')
     navbar.appendChild(navbarUl)
 
-    const navbarA1 = document.createElement('a')
-    navbarA1.classList.add('navbar-a')
-    navbarA1.href = '/'
-    navbarUl.appendChild(navbarA1)
+    for (let i = 0; i < 4; i++) {
+        const navbarLi = document.createElement('li')
+        navbarLi.classList.add('navbar-li')
+        navbarUl.appendChild(navbarLi)
 
-    const navbarA2 = document.createElement('a')
-    navbarA2.classList.add('navbar-a')
-    navbarA2.href = '/form'
-    navbarUl.appendChild(navbarA2)
+        const navbarA = document.createElement('a')
+        navbarA.classList.add('navbar-a')
+        navbarLi.appendChild(navbarA)
+    }
 
-    const navbarA3 = document.createElement('a')
-    navbarA3.classList.add('navbar-a')
-    navbarA3.href = '/posts'
-    navbarUl.appendChild(navbarA3)
-
-    const navbarA4 = document.createElement('a')
-    navbarA4.classList.add('navbar-a')
-    navbarA4.href = '/albums'
-    navbarUl.appendChild(navbarA4)
-
-    const navbbarLi1 = document.createElement('li')
-    navbbarLi1.classList.add('navbar-li')
-    navbbarLi1.innerText = 'Strona główna'
-    navbarA1.appendChild(navbbarLi1)
-
-    const navbbarLi2 = document.createElement('li')
-    navbbarLi2.classList.add('navbar-li')
-    navbbarLi2.innerText = 'Formularz'
-    navbarA2.appendChild(navbbarLi2)
-
-    const navbbarLi3 = document.createElement('li')
-    navbbarLi3.classList.add('navbar-li')
-    navbbarLi3.innerText = 'Posty'
-    navbarA3.appendChild(navbbarLi3)
-
-    const navbbarLi4 = document.createElement('li')
-    navbbarLi4.classList.add('navbar-li')
-    navbbarLi4.innerText = 'Albumy'
-    navbarA4.appendChild(navbbarLi4)
+    const navbarA = document.querySelectorAll('.navbar-a')
+    navbarA[0].setAttribute('href', '/')
+    navbarA[0].textContent = 'Strona główna'
+    navbarA[1].setAttribute('href', '/form')
+    navbarA[1].textContent = 'Formularz'
+    navbarA[2].setAttribute('href', '/posts')
+    navbarA[2].textContent = 'Posty'
+    navbarA[3].setAttribute('href', '/albums')
+    navbarA[3].textContent = 'Albumy'
 }
 
 createNavbar()
