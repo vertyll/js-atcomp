@@ -143,8 +143,14 @@ const buildComments = (postId, commentsData) => {
 }
 
 const postsEngine = (data) => {
-    for (const d in data) {
-        buildPosts(data[d])
+    for (const n in data) {
+        buildPosts(data[n])
+    }
+
+    if (data.length === 0) {
+        const noPosts = document.createElement('p')
+        noPosts.innerText = 'Brak postów'
+        postsContainer.appendChild(noPosts)
     }
 }
 

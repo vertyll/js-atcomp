@@ -98,8 +98,14 @@ const buildAlbums = (albumData) => {
 }
 
 const albumsEngine = (data) => {
-    for (const d in data) {
-        buildAlbums(data[d])
+    for (const n in data) {
+        buildAlbums(data[n])
+    }
+
+    if (data.length === 0) {
+        const noAlbums = document.createElement('p')
+        noAlbums.innerText = 'Brak albumów'
+        albumsContainer.appendChild(noAlbums)
     }
 }
 

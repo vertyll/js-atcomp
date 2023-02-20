@@ -105,6 +105,7 @@ const selectFilter = async (switchFilter) => {
         }
     }
     return filterData
+        
 }
 
 export {
