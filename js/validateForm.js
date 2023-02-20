@@ -14,17 +14,18 @@ import {
     customAlert
 } from './customAlert.js'
 
-const inputs = document.getElementById('form').elements,
-    pesel = document.getElementById('pesel'),
-    formValues = {
-        name: inputs.namedItem('name'),
-        surname: inputs.namedItem('surname'),
-        email: inputs.namedItem('email'),
-        age: inputs.namedItem('age'),
-        description: inputs.namedItem('description'),
-        gender: inputs.namedItem('gender'),
-        pesel: inputs.namedItem('pesel'),
-        dob: inputs.namedItem('dob'),
+const inputs = document.getElementById('form').elements
+const pesel = document.getElementById('pesel')
+
+formValues = {
+    name: inputs.namedItem('name'),
+    surname: inputs.namedItem('surname'),
+    email: inputs.namedItem('email'),
+    age: inputs.namedItem('age'),
+    description: inputs.namedItem('description'),
+    gender: inputs.namedItem('gender'),
+    pesel: inputs.namedItem('pesel'),
+    dob: inputs.namedItem('dob'),
 }
 
 function addInfo() {
