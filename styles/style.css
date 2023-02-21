@@ -94,7 +94,7 @@ header {
     flex: 1 1 0;
     padding: var(--r5);
     background-color: var(--nav);
-    color: var(--white);
+    color: var(--success);
     text-align: center;
     border-radius: var(--r5);
     box-shadow: 0px 0px 3px 0px rgba(66, 68, 90, 1);
