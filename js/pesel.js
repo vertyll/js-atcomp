@@ -5,6 +5,7 @@ import {
     ifAddInvoCreateBottom,
     addInfo
 } from './validateForm.js'
+import loading from './customLoader'
 
 function dobFromPesel(pesel) {
 
@@ -77,6 +78,7 @@ function validatePesel(pesel) {
     if (!pesel === valid) {
         customAlert('Pesel jest niepoprawny')
     } else {
+        loading.loading(app)
         dobFromPesel(pesel)
         ageFromPesel(pesel)
         genderFromPesel(pesel)
@@ -85,6 +87,7 @@ function validatePesel(pesel) {
         }
         ifAddInvoCreateBottom()
         addInfo(pesel)
+        loading.removeLoading()
     }
 }
 
