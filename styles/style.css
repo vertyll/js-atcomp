@@ -400,6 +400,13 @@ header {
 	.sidebar {
 		max-width: 200px;
 	}
+
+    .filter-form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
 }
 
 @media (max-width: 768px) {
