@@ -29,6 +29,8 @@ const buildFilter = (inputs) => {
     filterContainer.appendChild(filterForm)
     filterForm.name = 'filterForm'
     filterForm.classList.add('filter-form')
+    filterForm.classList.add('center')
+    filterForm.classList.add('width-max')
 
     for (let inputName in inputs) {
         let formItem = document.createElement('div')

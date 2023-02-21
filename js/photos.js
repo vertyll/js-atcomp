@@ -20,6 +20,7 @@ const createPhotosContainer = () => {
 
     const photos = document.createElement('div')
     photos.classList.add('photos-container')
+    photos.classList.add('width-max')
     main.appendChild(photos)
 }
 
@@ -50,6 +51,9 @@ const buildSliderWithButtons = (photos) => {
 
     const sliderContainer = document.createElement('div')
     sliderContainer.classList.add('slider-container')
+    sliderContainer.classList.add('center')
+    sliderContainer.classList.add('wrap')
+    sliderContainer.classList.add('width-max')
     slider.appendChild(sliderContainer)
 
     return sliderContainer

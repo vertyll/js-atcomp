@@ -13,6 +13,7 @@ const createNavbar = () => {
 
     const sidebar = document.createElement('aside')
     sidebar.classList.add('sidebar')
+    sidebar.classList.add('width-max')
     app.appendChild(sidebar)
 
     const h3 = document.createElement('h3')
@@ -39,6 +40,7 @@ const createNavbar = () => {
     navA[2].textContent = 'Posty'
     navA[3].setAttribute('href', '/albums')
     navA[3].textContent = 'Albumy'
+    
 }
 
 createNavbar()

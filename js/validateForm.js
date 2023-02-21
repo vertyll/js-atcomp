@@ -28,6 +28,20 @@ formValues = {
     dob: inputs.namedItem('dob'),
 }
 
+function ifAddInvoCreateBottom() {
+
+    const formContainer = document.querySelector('.form-container')
+    const formBottom = document.createElement('div')
+    formBottom.classList.add('form-bottom')
+    formBottom.classList.add('center')
+    formBottom.classList.add('width-max')
+    formContainer.appendChild(formBottom)
+
+    const p = document.createElement('p')
+    formBottom.appendChild(p)
+}
+
+
 function addInfo() {
 
     const div = document.querySelector('.form-bottom')
@@ -104,5 +118,6 @@ validateInit()
 
 export {
     addInfo,
-    formValues
+    formValues,
+    ifAddInvoCreateBottom
 }

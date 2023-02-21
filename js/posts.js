@@ -68,9 +68,13 @@ const createPostsContainer = () => {
     pageBody.appendChild(main)
     const filterForm = document.createElement('div')
     filterForm.classList.add('filter-container')
+    filterForm.classList.add('center')
     main.appendChild(filterForm)
     const posts = document.createElement('div')
     posts.classList.add('posts-container')
+    posts.classList.add('center')
+    posts.classList.add('wrap')
+    posts.classList.add('widht-max')
     main.appendChild(posts)
     postsContainer = document.querySelector('.posts-container')
     buildFilter(inputs)
@@ -86,6 +90,7 @@ const buildPosts = (postData) => {
     const posts = document.createElement('div')
     const post = postsContainer.appendChild(posts)
     post.classList.add('card')
+    post.classList.add('width-max')
     post.id = `post${postId}`
 
     const h2 = document.createElement('h3')
@@ -121,6 +126,7 @@ const buildComments = (postId, commentsData) => {
     const posts = document.getElementById(postId)
     const commentsContainer = document.createElement('div')
     commentsContainer.classList.add('comments-container')
+    commentsContainer.classList.add('width-max')
     commentsContainer.id = `comments${postId}`
     commentsContainer.innerHTML = "<h3>Komentarze:</h3>"
     posts.appendChild(commentsContainer)
@@ -152,6 +158,9 @@ const postsEngine = (data) => {
     } else {
         const noPosts = document.createElement('div')
         noPosts.classList.add('no-card')
+        noPosts.classList.add('center')
+        noPosts.classList.add('wrap')
+        noPosts.classList.add('width-max')
         noPosts.innerHTML = '<h2>Brak postów spełniających kryteria wyszukiwania</h2>'
         postsContainer.appendChild(noPosts)
     }

@@ -2,6 +2,7 @@ import {
     customAlert
 } from './customAlert'
 import {
+    ifAddInvoCreateBottom,
     addInfo
 } from './validateForm.js'
 
@@ -79,6 +80,7 @@ function validatePesel(pesel) {
         dobFromPesel(pesel)
         ageFromPesel(pesel)
         genderFromPesel(pesel)
+        ifAddInvoCreateBottom()
         addInfo(pesel)
     }
 }

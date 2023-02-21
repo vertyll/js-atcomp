@@ -5,8 +5,7 @@ function customAlert(message) {
     alert.classList.add('alert')
     alert.setAttribute('style',
         `
-        position: fixed; 
-        top: 25vh;
+        position: absolute;
         background-color: white; 
         border-radius: 1rem;
         display: flex;
@@ -15,6 +14,9 @@ function customAlert(message) {
         align-items: center;
         border: 0.1rem solid black;
         padding: 10px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         `
     )
     alertButton.setAttribute('style',
