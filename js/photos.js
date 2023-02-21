@@ -37,6 +37,7 @@ const buildSliderWithButtons = (photos) => {
 
     const sliderButtons = document.createElement('div')
     sliderButtons.classList.add('slider-buttons')
+    sliderButtons.classList.add('center')
     slider.appendChild(sliderButtons)
 
     const sliderButtonLeft = document.createElement('button')
