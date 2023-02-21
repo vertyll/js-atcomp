@@ -9,6 +9,8 @@ import {
     saveFilterSettings
 } from './filter.js'
 
+import loading  from './customLoader.js'
+
 const inputs = {
     author: {
         label: 'Autor:',
@@ -36,10 +38,12 @@ const inputs = {
         id: 'filter',
         body: 'Filtruj',
         btnFunction: async () => {
+            loading.loading(app)
             const filter = await getPostsData()
             const filteredPosts = await selectFilter(filter)
             postsData(filteredPosts)
             saveFilterSettings()
+            loading.removeLoading()
         }
     },
     reset: {
@@ -47,8 +51,10 @@ const inputs = {
         id: 'reset',
         body: 'Resetuj',
         btnFunction: async () => {
+            loading.loading(app)
             resetFilterForm()
             await postsData()
+            loading.removeLoading()
         }
     }
 }
@@ -112,6 +118,7 @@ const buildPosts = (postData) => {
 
     commentButton.addEventListener('click', async (e) => {
         if (e.target.value === 'notClicked') {
+            loading.loading(app)
             commentsData = await getCommentsData(postId)
             buildComments(post.id, commentsData)
             e.target.value = 'clicked'
@@ -119,6 +126,7 @@ const buildPosts = (postData) => {
             e.target.value = 'notClicked'
             document.getElementById(`comments${post.id}`).remove()
         }
+        loading.removeLoading()
     })
 }
 
@@ -150,7 +158,6 @@ const buildComments = (postId, commentsData) => {
 }
 
 const postsEngine = (data) => {
-    
     if (data.length) {
         for (const post of data) {
             buildPosts(post)

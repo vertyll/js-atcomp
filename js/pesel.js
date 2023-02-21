@@ -80,6 +80,9 @@ function validatePesel(pesel) {
         dobFromPesel(pesel)
         ageFromPesel(pesel)
         genderFromPesel(pesel)
+        if (document.getElementById('formBottom')) {
+            document.getElementById('formBottom').remove()
+        }
         ifAddInvoCreateBottom()
         addInfo(pesel)
     }

@@ -1,3 +1,5 @@
+import loading from './../js/customLoader.js'
+
 const app = document.getElementById('app')
 
 const path = window.location.pathname
@@ -78,4 +80,9 @@ const loadPage = async (path) => {
     await page.scripts()
 }
 
-loadPage(path)
+const loadPageWithLoader = async (path) => {
+    loading.loading(app)
+    await loadPage(path)
+}
+
+loadPageWithLoader(path)

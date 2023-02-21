@@ -1,5 +1,14 @@
-const loader = document.getElementById('preLoader')
+export default  {
+    loading: function(loadingElement) {
+        loadingDiv = document.createElement('div');
+        loadingDiv.classList.add('loading');
+        loadingElement.appendChild(loadingDiv);
 
-window.addEventListener('load', () => {
-    loader.style.display = 'none'
-})
+        window.addEventListener('load', () => {
+            loadingDiv.style.display = 'none'
+        })
+    },
+    removeLoading() {
+        loadingDiv.remove()
+    }
+}

@@ -7,6 +7,7 @@ import {
     resetFilterForm,
     saveFilterSettings
 } from './filter.js'
+import loading from './customLoader.js'
 
 const inputs = {
     author: {
@@ -28,10 +29,12 @@ const inputs = {
         id: 'filter',
         body: 'Filtruj',
         btnFunction: async () => {
+            loading.loading(app)
             const filter = await getAlbums()
             const filteredPosts = await selectFilter(filter)
             albumsData(filteredPosts)
             saveFilterSettings()
+            loading.removeLoading()
         }
     },
     reset: {
@@ -39,8 +42,10 @@ const inputs = {
         id: 'reset',
         body: 'Resetuj',
         btnFunction: async () => {
+            loading.loading(app)
             resetFilterForm()
             await albumsData()
+            loading.removeLoading()
         }
     },
 }

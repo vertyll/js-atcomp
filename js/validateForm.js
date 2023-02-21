@@ -35,6 +35,7 @@ function ifAddInvoCreateBottom() {
     formBottom.classList.add('form-bottom')
     formBottom.classList.add('center')
     formBottom.classList.add('width-max')
+    formBottom.id = 'formBottom'
     formContainer.appendChild(formBottom)
 
     const p = document.createElement('p')
