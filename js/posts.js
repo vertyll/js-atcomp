@@ -64,7 +64,7 @@ const createPostsContainer = () => {
     h1.innerText = 'Posty'
     header.appendChild(h1)
     const main = document.createElement('main')
-    main.classList.add('posts-main')
+    main.classList.add('main')
     pageBody.appendChild(main)
     const filterForm = document.createElement('div')
     filterForm.classList.add('filter-container')
@@ -85,7 +85,7 @@ const buildPosts = (postData) => {
 
     const posts = document.createElement('div')
     const post = postsContainer.appendChild(posts)
-    post.classList.add('post')
+    post.classList.add('card')
     post.id = `post${postId}`
 
     const h2 = document.createElement('h3')
@@ -151,7 +151,7 @@ const postsEngine = (data) => {
         }
     } else {
         const noPosts = document.createElement('div')
-        noPosts.classList.add('no-posts')
+        noPosts.classList.add('no-card')
         noPosts.innerHTML = '<h2>Brak postów spełniających kryteria wyszukiwania</h2>'
         postsContainer.appendChild(noPosts)
     }

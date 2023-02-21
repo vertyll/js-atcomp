@@ -10,7 +10,7 @@ const regex = {
 
 const styleBorder = (element, color) => element.style.border = `0.1rem solid ${color}`
 const styleBorderRed = (element) => styleBorder(element, 'red')
-const styleBroderGreen = (element) => styleBorder(element, 'green')
+const styleBroderGreen = (element) => styleBorder(element, '#3bba9c')
 
 function checkName() {
     if (regex.name.test(formValues.name.value)) styleBroderGreen(formValues.name)

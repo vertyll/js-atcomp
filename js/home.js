@@ -11,7 +11,7 @@ const createHomeContainer = () => {
     header.appendChild(h1)
 
     const main = document.createElement('main')
-    main.classList.add('home-main')
+    main.classList.add('main')
     pageBody.appendChild(main)
 
     const home = document.createElement('div')

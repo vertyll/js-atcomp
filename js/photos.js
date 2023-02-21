@@ -15,7 +15,7 @@ const createPhotosContainer = () => {
     header.appendChild(h1)
 
     const main = document.createElement('main')
-    main.classList.add('photos-main')
+    main.classList.add('main')
     pageBody.appendChild(main)
 
     const photos = document.createElement('div')

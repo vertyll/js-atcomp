@@ -11,7 +11,7 @@ const createFormContainer = () => {
     header.appendChild(h1)
 
     const main = document.createElement('main')
-    main.classList.add('form-main')
+    main.classList.add('main')
     pageBody.appendChild(main)
 
     const formContainer = document.createElement('div')

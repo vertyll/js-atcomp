@@ -8,6 +8,7 @@ const pages = {
         },
         scripts() {
             import ('./../js/navbar.js').then(() => {
+                import ('./../js/hamburger.js')
                 import ('./../js/error404.js')
             })
         }
@@ -18,6 +19,7 @@ const pages = {
         },
         scripts() {
             import ('./../js/navbar.js').then(() => {
+                import ('./../js/hamburger.js')
                 import ('./../js/home.js')
             })
         }
@@ -29,6 +31,7 @@ const pages = {
         scripts() {
             import ('./../js/navbar.js').then(() => {
                 import ('./../js/form.js').then(() => {
+                    import ('./../js/hamburger.js')
                     import ('./../js/validateForm.js')
                 })
             })
@@ -40,6 +43,7 @@ const pages = {
         },
         scripts() {
             import ('./../js/navbar.js').then(() => {
+                import ('./../js/hamburger.js')
                 import ('./../js/posts.js')
             })
         }
@@ -50,6 +54,7 @@ const pages = {
         },
         scripts() {
             import ('./../js/navbar.js').then(() => {
+                import ('./../js/hamburger.js')
                 import ('./../js/albums.js')
             })
         }
@@ -60,6 +65,7 @@ const pages = {
         },
         scripts() {
             import ('./../js/navbar.js').then(() => {
+                import ('./../js/hamburger.js')
                 import ('./../js/photos.js')
             })
         }

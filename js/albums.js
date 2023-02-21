@@ -58,7 +58,7 @@ const createAlbumsContainer = () => {
     header.appendChild(h1)
 
     const main = document.createElement('main')
-    main.classList.add('albums-main')
+    main.classList.add('main')
     pageBody.appendChild(main)
 
     const filterForm = document.createElement('div')
@@ -81,7 +81,7 @@ const buildAlbums = (albumData) => {
 
     const albums = document.createElement('div')
     const album = albumsContainer.appendChild(albums)
-    album.classList.add('album')
+    album.classList.add('card')
     album.id = `album${albumNumber}`
 
     const h2 = document.createElement('h3')
@@ -106,7 +106,7 @@ const albumsEngine = (data) => {
         }
     } else {
         const noAlbums = document.createElement('div')
-        noAlbums.classList.add('no-albums')
+        noAlbums.classList.add('no-card')
         noAlbums.innerHTML = '<h2>Brak albumów spełniających kryteria wyszukiwania</h2>'
         albumsContainer.appendChild(noAlbums)
     }

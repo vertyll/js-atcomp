@@ -1,31 +1,44 @@
 const createNavbar = () => {
-    const navbar = document.createElement('nav')
-    navbar.classList.add('navbar')
-    app.appendChild(navbar)
 
-    const navbarUl = document.createElement('ul')
-    navbarUl.classList.add('navbar-ul')
-    navbar.appendChild(navbarUl)
+    const menuToggle = document.createElement('div')
+    menuToggle.classList.add('menu-toggle')
+    app.appendChild(menuToggle)
 
+    const hamburger = document.createElement('div')
+    hamburger.classList.add('hamburger')
+    menuToggle.appendChild(hamburger)
+
+    const span = document.createElement('span')
+    hamburger.appendChild(span)
+
+    const sidebar = document.createElement('aside')
+    sidebar.classList.add('sidebar')
+    app.appendChild(sidebar)
+
+    const h3 = document.createElement('h3')
+    h3.innerText = 'Menu'
+    sidebar.appendChild(h3)
+
+    const nav = document.createElement('nav')
+    nav.classList.add('menu')
+    sidebar.appendChild(nav)
+        
+        
     for (let i = 0; i < 4; i++) {
-        const navbarLi = document.createElement('li')
-        navbarLi.classList.add('navbar-li')
-        navbarUl.appendChild(navbarLi)
-
-        const navbarA = document.createElement('a')
-        navbarA.classList.add('navbar-a')
-        navbarLi.appendChild(navbarA)
+        const navA = document.createElement('a')
+        navA.classList.add('menu-item')
+        nav.appendChild(navA)
     }
-
-    const navbarA = document.querySelectorAll('.navbar-a')
-    navbarA[0].setAttribute('href', '/')
-    navbarA[0].textContent = 'Strona główna'
-    navbarA[1].setAttribute('href', '/form')
-    navbarA[1].textContent = 'Formularz'
-    navbarA[2].setAttribute('href', '/posts')
-    navbarA[2].textContent = 'Posty'
-    navbarA[3].setAttribute('href', '/albums')
-    navbarA[3].textContent = 'Albumy'
+    
+    const navA = document.querySelectorAll('.menu-item')
+    navA[0].setAttribute('href', '/')
+    navA[0].textContent = 'Strona główna'
+    navA[1].setAttribute('href', '/form')
+    navA[1].textContent = 'Formularz'
+    navA[2].setAttribute('href', '/posts')
+    navA[2].textContent = 'Posty'
+    navA[3].setAttribute('href', '/albums')
+    navA[3].textContent = 'Albumy'
 }
 
 createNavbar()

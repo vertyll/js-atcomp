@@ -11,7 +11,7 @@ const createError404Container = () => {
     header.appendChild(h1)
 
     const main = document.createElement('main')
-    main.classList.add('error404-main')
+    main.classList.add('main')
     pageBody.appendChild(main)
 
     const error404 = document.createElement('div')
