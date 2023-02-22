@@ -1,8 +1,8 @@
 export default  {
-    loading: function(loadingElement) {
+    loading: function(lonpmading) {
         loadingDiv = document.createElement('div');
         loadingDiv.classList.add('loading');
-        loadingElement.appendChild(loadingDiv);
+        loading.appendChild(loadingDiv);
 
         window.addEventListener('load', () => {
             loadingDiv.style.display = 'none'

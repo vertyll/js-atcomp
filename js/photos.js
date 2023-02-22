@@ -70,6 +70,12 @@ const loadPhotosToSlider = async (albumId, photoId) => {
     let index = 0
     if (photoId) {
         index = photos.findIndex((photo) => photo.id === Number(photoId))
+    } else {
+        index = 0
+        const error = document.createElement('div')
+        error.classList.add('error')
+        error.innerText = 'Nie znaleziono zdjęcia'
+        sliderContainer.appendChild(error)
     }
 
     const showPhoto = (index) => {
