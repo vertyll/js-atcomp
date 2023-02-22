@@ -1,5 +1,5 @@
 export default  {
-    loading: function(lonpmading) {
+    loading: function(loading) {
         loadingDiv = document.createElement('div');
         loadingDiv.classList.add('loading');
         loading.appendChild(loadingDiv);
