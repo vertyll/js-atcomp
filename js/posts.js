@@ -112,44 +112,75 @@ const buildPosts = (postData) => {
 
     commentButton.addEventListener('click', async (e) => {
         if (e.target.value === 'notClicked') {
-            commentsData = await getCommentsData(postId)
-            buildComments(post.id, commentsData)
+
+            const buildCommentsDiv = document.createElement('div')
+            buildCommentsDiv.classList.add('comments-container')
+            buildCommentsDiv.classList.add('width-max')
+            buildCommentsDiv.id = `comments${postId}`
+            buildCommentsDiv.innerHTML = "<h3>Komentarze:</h3>"
+            posts.appendChild(buildCommentsDiv)
+
+            const loader = document.createElement('div')
+            loader.classList.add('comments-loading')
+            buildCommentsDiv.appendChild(loader)
+
+            const commentsData = await getCommentsData(postId)
+            for (comment in commentsData) {
+
+                const comments = document.createElement('div')
+                comments.classList.add('comments')
+                buildCommentsDiv.appendChild(comments)
+
+                const commentEmail = document.createElement('h4')
+                commentEmail.innerHTML = commentsData[comment].email
+                comments.appendChild(commentEmail)
+
+                const commentName = document.createElement('h5')
+                commentName.innerHTML = commentsData[comment].name
+                comments.appendChild(commentName)
+
+                const commentBody = document.createElement('p')
+                commentBody.innerText = commentsData[comment].body
+                comments.appendChild(commentBody)
+            }
+            loader.remove()
             e.target.value = 'clicked'
         } else {
+            const commentsDiv = document.getElementById(`comments${postId}`)
+            commentsDiv.remove()
             e.target.value = 'notClicked'
-            document.getElementById(`comments${post.id}`).remove()
         }
     })
 }
 
-const buildComments = (postId, commentsData) => {
+// const buildComments = (postId, commentsData) => {
 
-    posts = document.getElementById(postId)
-    const commentsContainer = document.createElement('div')
-    commentsContainer.classList.add('comments-container')
-    commentsContainer.classList.add('width-max')
-    commentsContainer.id = `comments${postId}`
-    commentsContainer.innerHTML = "<h3>Komentarze:</h3>"
-    posts.appendChild(commentsContainer)
+//     posts = document.getElementById(postId)
+//     const commentsContainer = document.createElement('div')
+//     commentsContainer.classList.add('comments-container')
+//     commentsContainer.classList.add('width-max')
+//     commentsContainer.id = `comments${postId}`
+//     commentsContainer.innerHTML = "<h3>Komentarze:</h3>"
+//     posts.appendChild(commentsContainer)
 
-    for (comment in commentsData) {
-        const comments = document.createElement('div')
-        comments.classList.add('comments')
-        commentsContainer.appendChild(comments)
+//     for (comment in commentsData) {
+//         const comments = document.createElement('div')
+//         comments.classList.add('comments')
+//         commentsContainer.appendChild(comments)
 
-        const commentEmail = document.createElement('h4')
-        commentEmail.innerHTML = commentsData[comment].email
-        comments.appendChild(commentEmail)
+//         const commentEmail = document.createElement('h4')
+//         commentEmail.innerHTML = commentsData[comment].email
+//         comments.appendChild(commentEmail)
 
-        const commentName = document.createElement('h5')
-        commentName.innerHTML = commentsData[comment].name
-        comments.appendChild(commentName)
+//         const commentName = document.createElement('h5')
+//         commentName.innerHTML = commentsData[comment].name
+//         comments.appendChild(commentName)
 
-        const commentBody = document.createElement('p')
-        commentBody.innerText = commentsData[comment].body
-        comments.appendChild(commentBody)
-    }
-}
+//         const commentBody = document.createElement('p')
+//         commentBody.innerText = commentsData[comment].body
+//         comments.appendChild(commentBody)
+//     }
+// }
 
 const postsEngine = (data) => {
     if (data.length) {

@@ -257,7 +257,8 @@ header {
 }
 
 .comments-container{
-    padding: var(--r4)
+    padding: var(--r4);
+    margin-bottom: 7rem;
 }
 
 .form-container{
@@ -377,7 +378,19 @@ header {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-  }
+}
+
+.comments-loading {
+    position: absolute;
+    border: 16px solid var(--input);
+    border-radius: 50%;
+    border-top: 16px solid var(--nav);
+    width: 80px;
+    height: 80px;
+    animation: spin 2s linear infinite;
+    margin-left: 20px;
+    margin-top: 20px;
+}
   
 @keyframes spin {
     0% { transform: rotate(0deg); }
