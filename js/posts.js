@@ -38,12 +38,8 @@ const inputs = {
         id: 'filter',
         body: 'Filtruj',
         btnFunction: async () => {
-            loading.loading(app)
-            const filter = await getPostsData()
-            const filteredPosts = await selectFilter(filter)
-            postsData(filteredPosts)
+            postsData()
             saveFilterSettings()
-            loading.removeLoading()
         }
     },
     reset: {
@@ -51,10 +47,8 @@ const inputs = {
         id: 'reset',
         body: 'Resetuj',
         btnFunction: async () => {
-            loading.loading(app)
             resetFilterForm()
             await postsData()
-            loading.removeLoading()
         }
     }
 }
@@ -118,7 +112,6 @@ const buildPosts = (postData) => {
 
     commentButton.addEventListener('click', async (e) => {
         if (e.target.value === 'notClicked') {
-            loading.loading(app)
             commentsData = await getCommentsData(postId)
             buildComments(post.id, commentsData)
             e.target.value = 'clicked'
@@ -126,18 +119,19 @@ const buildPosts = (postData) => {
             e.target.value = 'notClicked'
             document.getElementById(`comments${post.id}`).remove()
         }
-        loading.removeLoading()
     })
 }
 
 const buildComments = (postId, commentsData) => {
-    const posts = document.getElementById(postId)
+
+    posts = document.getElementById(postId)
     const commentsContainer = document.createElement('div')
     commentsContainer.classList.add('comments-container')
     commentsContainer.classList.add('width-max')
     commentsContainer.id = `comments${postId}`
     commentsContainer.innerHTML = "<h3>Komentarze:</h3>"
     posts.appendChild(commentsContainer)
+
     for (comment in commentsData) {
         const comments = document.createElement('div')
         comments.classList.add('comments')
@@ -175,10 +169,17 @@ const postsEngine = (data) => {
 
 const postsData = async () => {
     postsContainer.innerHTML = ''
-    posts = await getPostsData()
-    const filter = await getPostsData()
-    const filteredPosts = await selectFilter(filter)
-    postsEngine(filteredPosts)
+    posts = await getPostsData().then((posts) => {
+        const filteredPosts = selectFilter(posts)
+        postsEngine(filteredPosts)
+    })
 }
+
+// const postsData = async () => {
+//     postsContainer.innerHTML = ''
+//     const filter = await getPostsData()
+//     const filteredPosts = selectFilter(filter)
+//     postsEngine(filteredPosts)
+// }
 
 createPostsContainer()
