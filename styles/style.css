@@ -211,7 +211,9 @@ header {
     border-top-left-radius: var(--r5);
     border-top-right-radius: var(--r5);
     color: var(--white);
-    max-height: 45px;
+    max-height: 70px;
+    padding-top: var(--r4);
+    padding-bottom: var(--r4);
     height: 100vh;
     display: flex;
     align-items: center;
