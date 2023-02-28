@@ -1,8 +1,5 @@
 import loading from './../js/customLoader.js'
 
-const app = document.getElementById('app')
-
-const path = window.location.pathname
 const pages = {
     '404': {
         html() {
@@ -74,15 +71,28 @@ const pages = {
     }
 }
 
-const loadPage = async (path) => {
-    const page = pages[path] || pages['404']
-    await page.html()
-    await page.scripts()
+const navigateTo = url => {
+    history.pushState(null, null, url)
+    router()
 }
 
-const loadPageWithLoader = async (path) => {
-    loading.loading(app)
-    await loadPage(path)
+const router = async () => {
+    const content = document.getElementById('app')
+    const { pathname } = window.location
+    const page = pages[pathname] ? pages[pathname] : pages['404']
+    content.innerHTML = await page.html()
+    page.scripts()
 }
 
-loadPageWithLoader(path)
+window.addEventListener('popstate', router)
+
+document.addEventListener('DOMContentLoaded', () => {
+    links = document.querySelectorAll('a')
+    links.forEach(link => {
+        link.addEventListener('click', e => {
+            e.preventDefault()
+            navigateTo(e.target.href)
+        })
+    })
+    router()
+})
