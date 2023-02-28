@@ -115,7 +115,9 @@ function validateInit() {
     })
 }
 
-validateInit()
+export function mounted() {
+    validateInit()
+}
 
 export {
     addInfo,

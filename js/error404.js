@@ -24,4 +24,6 @@ const createError404Container = () => {
     error404Container.appendChild(error404Text)
 }
 
-createError404Container()
+export function mounted() {
+    createError404Container()
+}

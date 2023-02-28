@@ -1,5 +1,7 @@
-const createNavbar = () => {
+import { navigateTo } from './navigate.js'
 
+const createNavbar = () => {
+    const app = document.getElementById('app')
     const menuToggle = document.createElement('div')
     menuToggle.classList.add('menu-toggle')
     app.appendChild(menuToggle)
@@ -34,13 +36,30 @@ const createNavbar = () => {
     const navA = document.querySelectorAll('.menu-item')
     navA[0].setAttribute('href', '/')
     navA[0].textContent = 'Strona główna'
+    navA[0].addEventListener('click', (e) => {
+        e.preventDefault()
+        navigateTo(e.target.href)
+    })
     navA[1].setAttribute('href', '/form')
     navA[1].textContent = 'Formularz'
+    navA[1].addEventListener('click', (e) => {
+        e.preventDefault()
+        navigateTo(e.target.href)
+    })
     navA[2].setAttribute('href', '/posts')
     navA[2].textContent = 'Posty'
+    navA[2].addEventListener('click', (e) => {
+        e.preventDefault()
+        navigateTo(e.target.href)
+    })
     navA[3].setAttribute('href', '/albums')
     navA[3].textContent = 'Albumy'
-    
+    navA[3].addEventListener('click', (e) => {
+        e.preventDefault()
+        navigateTo(e.target.href)
+    })
 }
 
-createNavbar()
+export function mounted() {
+    createNavbar()
+}

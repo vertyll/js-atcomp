@@ -1,98 +1,89 @@
-import loading from './../js/customLoader.js'
+const init = async () => {
+    const navbar = await import ('./../js/navbar.js')
+    navbar.mounted()
+    // const hamburger = await import ('./../js/hamburger.js')
+    // hamburger.mounted()
+}
 
 const pages = {
     '404': {
         html() {
             import ('./../pages/error404.html')
         },
-        scripts() {
-            import ('./../js/navbar.js').then(() => {
-                import ('./../js/hamburger.js')
-                import ('./../js/error404.js')
-            })
+        async scripts() {
+            const error404Container = await import ('./../js/error404.js')
+            error404Container.mounted()
         }
     },
     '/': {
         html() {
             import ('./../pages/home.html')
         },
-        scripts() {
-            import ('./../js/navbar.js').then(() => {
-                import ('./../js/hamburger.js')
-                import ('./../js/home.js')
-            })
+        async scripts() {
+            const homeContainer = await import ('./../js/home.js')
+            homeContainer.mounted()
         }
     },
     '/form': {
         html() {
             import ('./../pages/form.html')
         },
-        scripts() {
-            import ('./../js/navbar.js').then(() => {
-                import ('./../js/form.js').then(() => {
-                    import ('./../js/hamburger.js')
-                    import ('./../js/validateForm.js')
-                })
-            })
+        async scripts() {
+            const formContainer = await import ('./../js/form.js')
+            formContainer.mounted()
+
+            const validateForm = await import ('./../js/validateForm.js')
+            validateForm.mounted()
         }
     },
     '/posts': {
         html() {
             import ('./../pages/posts.html')
         },
-        scripts() {
-            import ('./../js/navbar.js').then(() => {
-                import ('./../js/hamburger.js')
-                import ('./../js/posts.js')
-            })
+        async scripts() {
+            const postsContainer = await import ('./../js/posts.js')
+            postsContainer.mounted()
         }
     },
     '/albums': {
         html() {
             import ('./../pages/albums.html')
         },
-        scripts() {
-            import ('./../js/navbar.js').then(() => {
-                import ('./../js/hamburger.js')
-                import ('./../js/albums.js')
-            })
+        async scripts() {
+            const albumsContainer = await import ('./../js/albums.js')
+            albumsContainer.mounted()
         }
     },
     '/photos': {
         html() {
             import ('../pages/photos.html')
         },
-        scripts() {
-            import ('./../js/navbar.js').then(() => {
-                import ('./../js/hamburger.js')
-                import ('./../js/photos.js')
-            })
+        async scripts() {
+            const photosContainer = await import ('./../js/photos.js')
+            photosContainer.mounted()
         }
     }
 }
 
-const navigateTo = url => {
-    history.pushState(null, null, url)
-    router()
-}
+const route = (event) => {
+    event = event || window.event;
+    event.preventDefault();
+    window.history.pushState({}, "", event.target.href);
+    router();
+};
 
 const router = async () => {
-    const content = document.getElementById('app')
-    const { pathname } = window.location
-    const page = pages[pathname] ? pages[pathname] : pages['404']
-    content.innerHTML = await page.html()
-    page.scripts()
-}
+    const path = window.location.pathname;
+    const route = pages[path] || pages[404];
+    const html = await fetch(route).then((data) => data.text());
+    document.getElementById("app").innerHTML = html;
+    init();
+    route.scripts();
+};
 
-window.addEventListener('popstate', router)
+window.onpopstate = router;
+window.route = route;
 
-document.addEventListener('DOMContentLoaded', () => {
-    links = document.querySelectorAll('a')
-    links.forEach(link => {
-        link.addEventListener('click', e => {
-            e.preventDefault()
-            navigateTo(e.target.href)
-        })
-    })
-    router()
-})
+router();
+
+export { router }

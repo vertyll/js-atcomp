@@ -107,4 +107,6 @@ const photos = () => {
     loadPhotosGerUrlToSlider()
 }
 
-photos()
+export function mounted() {
+    photos()
+}

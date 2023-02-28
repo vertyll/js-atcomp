@@ -179,4 +179,6 @@ const createFormContainer = () => {
 
 }
 
-createFormContainer()
+export function mounted() {
+    createFormContainer()
+}

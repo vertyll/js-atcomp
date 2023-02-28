@@ -125,4 +125,6 @@ const albumsData = async () => {
     })
 }
 
-createAlbumsContainer()
+export function mounted() {
+    createAlbumsContainer()
+}

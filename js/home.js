@@ -24,4 +24,6 @@ const createHomeContainer = () => {
     homeContainer.appendChild(homeText)
 }
 
-createHomeContainer()
+export function mounted() {
+    createHomeContainer()
+}

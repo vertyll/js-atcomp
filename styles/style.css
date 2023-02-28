@@ -23,6 +23,11 @@
 	font-family: sans-serif;
 }
 
+/* body{
+    display: flex;
+    flex-direction: row-reverse;
+} */
+
 #app {
 	display: flex;
 	min-height: 100vh;

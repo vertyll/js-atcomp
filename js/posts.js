@@ -213,4 +213,6 @@ const postsData = async () => {
 //     postsEngine(filteredPosts)
 // }
 
-createPostsContainer()
+export function mounted() {
+    createPostsContainer()
+}
