@@ -29,12 +29,8 @@ const inputs = {
         id: 'filter',
         body: 'Filtruj',
         btnFunction: async () => {
-            loading.loading(app)
-            const filter = await getAlbums()
-            const filteredPosts = await selectFilter(filter)
-            albumsData(filteredPosts)
+            albumsData()
             saveFilterSettings()
-            loading.removeLoading()
         }
     },
     reset: {
@@ -42,10 +38,8 @@ const inputs = {
         id: 'reset',
         body: 'Resetuj',
         btnFunction: async () => {
-            loading.loading(app)
             resetFilterForm()
             await albumsData()
-            loading.removeLoading()
         }
     },
 }
@@ -125,10 +119,10 @@ const albumsEngine = (data) => {
 
 const albumsData = async () => {
     albumsContainer.innerHTML = ''
-    albums = await getAlbums()
-    const filter = await getAlbums()
-    const filteredAlbums = await selectFilter(filter)
-    albumsEngine(filteredAlbums)
+    albums = await getAlbums().then((albums) => {
+        const filteredAlbums = selectFilter(albums)
+        albumsEngine(filteredAlbums)
+    })
 }
 
 createAlbumsContainer()
