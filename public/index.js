@@ -1,8 +1,8 @@
 const init = async () => {
     const navbar = await import ('./../js/navbar.js')
     navbar.mounted()
-    // const hamburger = await import ('./../js/hamburger.js')
-    // hamburger.mounted()
+    const hamburger = await import ('./../js/hamburger.js')
+    hamburger.mounted()
 }
 
 const pages = {
