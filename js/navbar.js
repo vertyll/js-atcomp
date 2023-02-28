@@ -1,4 +1,4 @@
-import { navigateTo } from './navigate.js'
+import { navigateTo } from '../router/navigate.js'
 
 const createNavbar = () => {
     const app = document.getElementById('app')

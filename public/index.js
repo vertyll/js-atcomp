@@ -8,7 +8,7 @@ const init = async () => {
 const pages = {
     '404': {
         html() {
-            import ('./../pages/error404.html')
+            return import ('./../pages/error404.html')
         },
         async scripts() {
             const error404Container = await import ('./../js/error404.js')
@@ -17,7 +17,7 @@ const pages = {
     },
     '/': {
         html() {
-            import ('./../pages/home.html')
+            return import ('./../pages/home.html')
         },
         async scripts() {
             const homeContainer = await import ('./../js/home.js')
@@ -26,7 +26,7 @@ const pages = {
     },
     '/form': {
         html() {
-            import ('./../pages/form.html')
+            return import ('./../pages/form.html')
         },
         async scripts() {
             const formContainer = await import ('./../js/form.js')
@@ -38,7 +38,7 @@ const pages = {
     },
     '/posts': {
         html() {
-            import ('./../pages/posts.html')
+            return import ('./../pages/posts.html')
         },
         async scripts() {
             const postsContainer = await import ('./../js/posts.js')
@@ -47,7 +47,7 @@ const pages = {
     },
     '/albums': {
         html() {
-            import ('./../pages/albums.html')
+            return import ('./../pages/albums.html')
         },
         async scripts() {
             const albumsContainer = await import ('./../js/albums.js')
@@ -56,7 +56,7 @@ const pages = {
     },
     '/photos': {
         html() {
-            import ('../pages/photos.html')
+            return import ('../pages/photos.html')
         },
         async scripts() {
             const photosContainer = await import ('./../js/photos.js')
@@ -65,25 +65,17 @@ const pages = {
     }
 }
 
-const route = (event) => {
-    event = event || window.event;
-    event.preventDefault();
-    window.history.pushState({}, "", event.target.href);
-    router();
-};
-
 const router = async () => {
-    const path = window.location.pathname;
-    const route = pages[path] || pages[404];
-    const html = await fetch(route).then((data) => data.text());
-    document.getElementById("app").innerHTML = html;
-    init();
-    route.scripts();
-};
+    const path = window.location.pathname
+    const route = pages[path] || pages[404]
+    document.getElementById("app").innerHTML =
+    await route.html()
+    await init()
+    await route.scripts()
+}
 
-window.onpopstate = router;
-window.route = route;
+window.addEventListener("popstate", router)
 
-router();
+router()
 
 export { router }
