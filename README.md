@@ -1,1 +1,1 @@
-# atcomp
+# js-atcomp
