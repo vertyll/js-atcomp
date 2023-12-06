@@ -1,1 +1,1 @@
-# js-posts-and-form
+# js-posts-albums-form
