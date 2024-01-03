@@ -15,7 +15,7 @@ import {
 } from './customAlert.js'
 
 const inputs = document.getElementById('form').elements
-const pesel = document.getElementById('pesel')
+const peselElement = document.getElementById('pesel');
 
 formValues = {
     name: inputs.namedItem('name'),
